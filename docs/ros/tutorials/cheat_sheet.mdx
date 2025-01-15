@@ -1,0 +1,238 @@
+---
+title: ROS Cheat Sheet
+sidebar_label: ROS Cheat Sheet
+sidebar_position: 1
+toc_min_heading_level: 2
+toc_max_heading_level: 4
+---
+
+:::note
+
+This page is intended to provide quick reference to common ROS commands and concepts. It is not
+an exhaustive resource.
+
+Please refer to [the official ROS docs](https://docs.ros.org/) for complete documentation.
+
+:::
+
+:::note
+
+In any `bash` command, items contained within square brackets (`[]`) means the items with the
+brackets are _optional_, and may be omitted.
+
+:::
+
+## ROS command-line tools
+
+Since ROS 2 launched, all ROS 2 terminal commands are of the format `ros2 command [verb] [args...]`
+
+### Seting the `ROS_DOMAIN_ID`
+
+Because of its distributed nature, ROS 2 uses numbered **domains** to manage communication
+between nodes. Before running any `ros2` commands, make sure your domain is set correctly.
+
+```bash
+export ROS_DOMAIN_ID=0
+```
+
+Domain IDs can be any integer from `0` to `232`, though general convention is to avoid using
+any domain ID higher than `100` unless absolutely necessary.
+
+If unset, the default domain ID is `0`.
+
+### Interacting with nodes
+
+#### Start a node
+
+```bash
+ros2 run package_name executable_name [args]
+```
+
+#### Start multiple nodes with a launch file
+
+```bash
+ros2 launch [--debug] package_name launch_file.launch.py [launch arguments...]
+```
+
+#### List running nodes
+
+```bash
+ros2 node list
+```
+
+#### Inspect a node
+
+```bash
+ros2 node info /fully/qualified/node_name
+```
+
+### Interacting with topics
+
+#### List published topics
+
+```bash
+ros2 topic list
+```
+
+#### Inspect a topic
+
+```bash
+ros2 topic info /fully/qualified/topic_name [--verbose]
+```
+
+#### Echo a topic
+
+```bash
+ros2 topic echo /fully/qualified/topic_name
+```
+
+#### Check the publish rate of a topic
+
+```bash
+ros2 topic hz /fully/qualified/topic_name
+```
+
+#### Publish a topic
+
+```
+ros2 topic pub /fully/qualified/topic_name package/msg/Type '{ JSON-formatted message payload goes here }' [-r HZ]
+```
+
+where `HZ` is the desired frequencey of the publication in Hz. The contents of the
+JSON-formatted payload depends on the type of message being published. Below are some
+concrete examples:
+
+```bash
+ros2 topic pub /hello_world std_msgs/msg/String '{"data": "Hello World"}' -r 0.5
+```
+
+```bash
+ros2 topic pub /a200_0000/cmd_vel geometry_msgs/msg/Twist '{"linear": {"x": 0.5}}` -r 10
+```
+
+### Interacting with services
+
+#### List services
+
+```bash
+ros2 service list
+```
+
+#### Inspect a service
+
+```bash
+ros service info /fully/qualified/service_name
+```
+
+#### Call a service
+
+```bash
+ros2 service call /fully/qualified/service_name package/srv/Type ['{ JSON-formatted service args here }']
+```
+
+### Interacting with actions
+
+#### List actions
+
+```bash
+ros2 actions list
+```
+
+#### Inspect an actions
+
+```bash
+ros2 action info /fully/qualified/action_name
+```
+
+#### Sending a goal to an action
+
+```bash
+ros actions info /fully/qualified/action_name ['{ JSON-formatted action goal }']
+```
+
+### Restart the ROS 2 daemon
+
+Running any `ros2` command will automatically start the daemon if it isn't running already.
+
+You can stop the daemon by running
+
+```bash
+ros2 daemon stop
+```
+
+The daemon will automatically restart the next time you run a `ros2` command.
+
+## Workspaces
+
+A ROS workspace is a directory with a specific structure used to build ROS packages from source.
+
+Workspaces can have any name and be located anywhere on your local filesystem. For simplity
+this document uses `colcon_ws` as the name of the workspace directory.
+
+### Creating a workspace
+
+```bash
+mkdir -p colcon_ws/src
+cd colcon_ws
+colcon build
+source install/setup.bash
+```
+
+### Add a source package to the workspace
+
+```bash
+cd /path/to/colcon_ws/src
+git clone https://github.com/org/repo_name.git -b repo_branch
+```
+
+### Resolve dependencies within a workspace
+
+::: note
+
+Make sure you've already run `sudo rosdep init` once on your system to initialize
+`rosdep` the first time!
+
+:::
+
+```bash
+cd /path/to/colcon_ws/
+rosdep update
+rosdep install --from-paths src --ignore-src -r -y
+```
+
+## Packages
+
+### Create a package
+
+### Package files and folders
+
+| File Path                  | Description
+|----------------------------|----------------------------------------------|
+| `package.xml`              | ROS package information |
+| `CMakeLists.txt`           | Package build instructions |
+| `setup.cfg`                | Package metadata |
+| `setup.py`                 | Python package build instructions |
+
+| Directory path             | Description |
+|----------------------------|----------------------------------------------|
+| `package_name/`            | Python3 source files |
+| `include/package_name/`    | C++ header files |
+| `src/`                     | C++ source files |
+| `action/`, 'msg/`, 'srv/`  | ROS action, message, and service definitions |
+
+## `CMakeLists.txt`
+
+### Skeleton
+
+### Dependencies
+
+### Actions, messages, and services
+
+### Build libraries and executables
+
+### Installation
+
+## `setup.py
+
+### Skeleton
+
