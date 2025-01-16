@@ -204,13 +204,38 @@ rosdep install --from-paths src --ignore-src -r -y
 
 ### Create a package
 
+CMake package:
+
+```bash
+cd /path/to/colcon_ws/src
+ros2 pkg create --build-type ament_cmake [--license your_license] package_name
+```
+
+Python package:
+
+```bash
+cd /path/to/colcon_ws/src
+ros2 pkg create --build-type ament_python [--license your_license] package_name
+```
+
+Supported licenses include:
+- Apache-2.0
+- BSL-1.0
+- BSD-2.0
+- BSD-2-Clause
+- BSD-3-Clause
+- GPL-3.0-only
+- LGPL-3.0-only
+- MIT
+- MIT-0
+
 ### Package files and folders
 
 | File Path                  | Description
 |----------------------------|----------------------------------------------|
 | `package.xml`              | ROS package information |
-| `CMakeLists.txt`           | Package build instructions |
-| `setup.cfg`                | Package metadata |
+| `CMakeLists.txt`           | CMake package build instructions |
+| `setup.cfg`                | Python `setuptools` configuration |
 | `setup.py`                 | Python package build instructions |
 
 | Directory path             | Description |
@@ -220,19 +245,189 @@ rosdep install --from-paths src --ignore-src -r -y
 | `src/`                     | C++ source files |
 | `action/`, 'msg/`, 'srv/`  | ROS action, message, and service definitions |
 
+## `package.xml`
+
+### Skeleton
+
+CMake package:
+
+```xml
+<?xml version="1.0"?>
+<?xml-model
+   href="http://download.ros.org/schema/package_format3.xsd"
+   schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>package_name</name>
+  <version>0.0.0</version>
+  <description>Package description</description>
+  <maintainer email="my_email@my_provider.domain">Maintainer's Name</maintainer>
+  <license>your_license</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <!--
+    Add dependencies here
+  -->
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
+```
+
+Python package:
+
+```xml
+<?xml version="1.0"?>
+<?xml-model
+   href="http://download.ros.org/schema/package_format3.xsd"
+   schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>package_name</name>
+  <version>0.0.0</version>
+  <description>Package description</description>
+  <maintainer email="my_email@my_provider.domain">Maintainer's Name</maintainer>
+  <license>your_license</license>
+
+  <test_depend>ament_copyright</test_depend>
+  <test_depend>ament_flake8</test_depend>
+  <test_depend>ament_pep257</test_depend>
+  <test_depend>python3-pytest</test_depend>
+
+  <!--
+    Add dependencies here
+  -->
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>
+```
+
 ## `CMakeLists.txt`
 
 ### Skeleton
 
-### Dependencies
+```
+cmake_minimum_required(VERSION 3.8)
+project(package_name)
+find_package(ament_cmake REQUIRED)
+ament_package()
+```
 
 ### Actions, messages, and services
 
+Add all of your `.action`, `.msg`, and `.srv` files to `CMakeLists.txt`:
+
+```
+rosidl_generate_interfaces(
+    ${PROJECT_NAME}
+        action/my_action.action
+        msg/my_message.msg
+        srv/my_service.srv
+)
+```
+
+If your definitions contain messages from other packages, add them as dependencies, e.g.:
+
+```
+rosidl_generate_interfaces(
+    ${PROJECT_NAME}
+        action/my_action.action
+        msg/my_message.msg
+        srv/my_service.srv
+    DEPENDENCIES
+        geometry_msgs
+        std_msgs
+)
+```
+
+Add the following to `package.xml`:
+
+```xml
+<buildtool_depend>rosidl_default_generators</buildtool_depend>
+<exec_depend>rosidl_default_runtime</exec_depend>
+<member_of_group>rosidl_interface_packages</member_of_group>
+
+<!-- plus any external packages you depend on, e.g. -->
+<depend>geometry_msgs</depend>
+<depend>std_msgs</depend>
+```
+
 ### Build libraries and executables
+
+Each package can contain multiple executables or libraries
+
+```
+add_executable(my_executable src/my_executable_source.cpp)
+
+add_library(my_library src/my_library_source.cpp)
+```
+
+If your executables or libraries require additional dependencies you must add them too:
+
+```
+find_package(dependency_1 REQUIRED)
+find_package(dependency_2 REQUIRED)
+
+add_executable(my_executable src/my_executable_source.cpp)
+ament_target_dependencies(my_executable dependency_1)
+
+add_library(my_library src/my_library_source.cpp)
+ament_target_dependencies(my_library dependency_2)
+```
 
 ### Installation
 
 ## `setup.py`
 
+:::note
+
+This file repeats some information found in `package.xml`; the information in both files
+must match!
+
+:::
+
 ### Skeleton
 
+```python
+from setuptools import find_packages, setup
+
+package_name = 'package_name'
+
+setup(
+    name=package_name,
+    version='0.0.0',
+    packages=find_packages(exclude=['test']),
+    data_files=[
+        ('share/ament_index/resource_index/packages',
+            ['resource/' + package_name]),
+        ('share/' + package_name, ['package.xml']),
+    ],
+    install_requires=['setuptools'],
+    zip_safe=True,
+    maintainer='Maintainer Name',
+    maintainer_email='my_email@my_provider.domain',
+    description='Package description',
+    license='your_license',
+    tests_require=['pytest'],
+    entry_points={
+        'console_scripts': [
+        ],
+    },
+)
+```
+
+## `setup.cfg`
+
+### Skeleton
+
+```
+[develop]
+script_dir=$base/lib/package_name
+[install]
+install_scripts=$base/lib/package_name
+```
