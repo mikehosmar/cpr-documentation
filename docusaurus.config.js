@@ -1,10 +1,12 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require("prism-react-renderer/themes/github");
-const darkCodeTheme = require("prism-react-renderer/themes/dracula");
-const math = require("remark-math");
-const katex = require("rehype-katex");
+import {themes as prismThemes} from 'prism-react-renderer';
+
+const lightCodeTheme = prismThemes.github;
+const darkCodeTheme = prismThemes.dracula;
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -23,13 +25,12 @@ const config = {
   presets: [
     [
       "classic",
-      /** @type {import('@docusaurus/preset-classic').Options} */
-      ({
+      {
         docs: false,
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
-      }),
+      },
     ],
   ],
 
@@ -41,8 +42,8 @@ const config = {
         path: "docs",
         routeBasePath: "docs",
         sidebarPath: require.resolve("./sidebars-docs.js"),
-        remarkPlugins: [math],
-        rehypePlugins: [katex],
+        remarkPlugins: [remarkMath],
+        rehypePlugins: [rehypeKatex],
         showLastUpdateTime: true,
         versions: {
           ros2humble: {
@@ -52,7 +53,11 @@ const config = {
             label: 'ROS 1 Noetic',
           }
         },
-        includeCurrentVersion: false,
+        includeCurrentVersion: true,
+        admonitions: {
+          keywords: ['safety-danger', 'safety-warning', 'safety-caution'],
+          extendDefaults: true,
+        },
       },
     ],
     [
@@ -62,8 +67,8 @@ const config = {
         path: "docs_indoornav_user_manual",
         routeBasePath: "docs_indoornav_user_manual",
         sidebarPath: require.resolve("./sidebars.js"),
-        remarkPlugins: [math],
-        rehypePlugins: [katex],
+        remarkPlugins: [remarkMath],
+        rehypePlugins: [rehypeKatex],
         showLastUpdateTime: true,
       },
     ],
@@ -74,8 +79,8 @@ const config = {
         path: "docs_outdoornav_user_manual",
         routeBasePath: "docs_outdoornav_user_manual",
         sidebarPath: require.resolve("./sidebars.js"),
-        remarkPlugins: [math],
-        rehypePlugins: [katex],
+        remarkPlugins: [remarkMath],
+        rehypePlugins: [rehypeKatex],
         showLastUpdateTime: true,
         includeCurrentVersion: true,
       },
