@@ -4,10 +4,16 @@ sidebar_label: ROS 2 Overview
 sidebar_position: 1
 ---
 
-For [ROS 2 Humble](https://docs.ros.org/en/humble/index.html) and beyond, the software structure of Clearpath
-robots has changed significantly. Rather than having individual sets of packages for each robot, we have opted to
-create common `clearpath` packages which are used by all supported platforms. Additionally, we are moving away from
-using environment variables to customize the robot, and instead using a YAML configuration file to describe the
+:::info
+
+The information on these pages is for the ROS 2 Jazzy distribution. Use the dropdown box at the top
+of this page to select information for other ROS distributions.
+
+:::
+
+For [ROS 2 Jazzy](https://docs.ros.org/en/jazzy/index.html), rather than having individual sets of packages for each
+robot, we have opted to create common `clearpath` packages which are used by all supported platforms.
+Additionally, we no long use environment variables to customize the robot, and instead using a YAML configuration file to describe the
 robot. We have also defined a [ROS 2 API](api/overview.mdx) common to all of our supported platforms. As a result,
 our platforms are now more customizable, more modular, and more unified.
 
@@ -23,18 +29,19 @@ may be referred to by the platform code to indicate the revision.
 **_Clearpath API_**: The _API_ refers to the [ROS 2 application programming interface](api/overview.mdx). This is a set
 of ROS 2 topics and services defined by Clearpath which are used by all supported Clearpath platforms.
 
-## Supported Platforms {#supported-platforms}
+## Supported Jazzy Platforms {#supported-platforms}
 
-| Platform  | Platform code | Supports ROS 2 Humble (amd64) | (arm64) |
+| Platform  | Platform code | Supports ROS 2 Jazzy (amd64)  | (arm64) |
 | :-------- | :------------ | :---------------------------- | :------ |
-| Husky     | A200          | Yes (As of 0.1)               | Coming  |
-| Jackal    | J100          | Yes (As of 0.1)               | Coming  |
-| Warthog   | W200          | Yes (As of 0.2)               | Coming  |
-| Dingo     | DD100         | Yes (As of 0.3)               | Coming  |
-|           | DO100         | Yes (As of 1.0)               | Coming  |
-|           | DD150         | Yes (As of 0.3)               | Coming  |
-|           | DO150         | Yes (As of 1.0)               | Coming  |
-| Ridgeback | R100          | Yes (As of 0.3)               | Coming  |
+| Husky     | A200          | Yes (As of 2.0)               | Coming  |
+|           | A300          | Yes (As of 2.0)               | Coming  |
+| Jackal    | J100          | Coming                        | Coming  |
+| Warthog   | W200          | Coming                        | Coming  |
+| Dingo     | DD100         | Coming                        | Coming  |
+|           | DO100         | Coming                        | Coming  |
+|           | DD150         | Coming                        | Coming  |
+|           | DO150         | Coming                        | Coming  |
+| Ridgeback | R100          | Coming                        | Coming  |
 | Boxer     | B250          | No                            | No      |
 
 
@@ -78,40 +85,11 @@ Debian drivers are automatically installed on robots as part of the
 
 ## Changelog
 
-### [1.0] 2024-11-27
+### [2.0] 2025-02-28
 
 #### New Features
- - DO100 and DO150 Platform
- - Added support for Ridgeback and Dingo to `clearpath_nav2_demos`
- - Added support Axis cameras
- - Added pointcloud support to OakD
- - Updated CAN interface for Pumas
- - Updated `clearpath_platform_msgs`
- - Added `clearpath_motor_msgs`
- - Removed `clearpath_platform` and `clearpath_hardware_interfaces` to `clearpath_robot`
- - Added vcan service
- - Move `battery_state` to `clearpath_hardware_interfaces`
- - Add clearpath_motor_drivers, puma_motor_driver
- - Play simulation automatically
+ - First Jazzy release
 
 #### Fixed
- - Jackal driving performance issues at high speeds
- - Fixed issues with setting Domain ID on MCU robots
+ - First Jazzy release
 
-### [0.3.0] 2024-09-10
-:::warning
-The `StopStatus` message in `clearpath_msgs` has an additional field in the `0.3.0` release. This message type is used by the MicroROS enabled, robot MCU; therefore, the firmware must be updated on all robot platforms, except the A200. See, the [robot installation section](./installation/robot.mdx#firmware-update) for information on updating the firmware.
-:::
-#### New Features
- - DD100 and DD150 Platform and [Attachments](./config/yaml/platform/attachments/dx1X0.mdx)
- - R100 Platform and [Attachments](./config/yaml/platform/attachments/r100.mdx)
- - [Manipulator Generators](./config/generators.mdx#manipulation-generation)
- - MoveIt! Configuration Generation
- - [Kinova Gen3 Lite, 6Dof, and 7Dof Arms](./config/yaml/manipulators.mdx#kinova-arms)
- - [Robotiq 2F 85 and 140 Grippers](./config/yaml/manipulators.mdx#robotiq-grippers)
-
-#### Changed
- - `StopStatus` message added `needs_reset` parameter for R100 platform.
-
-#### Fixed
- - Use `StopStatus` message to set lighting state

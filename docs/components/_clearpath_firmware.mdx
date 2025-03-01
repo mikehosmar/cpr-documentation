@@ -9,6 +9,26 @@ Before flashing firmware, place your robot up on blocks or disengage the drivetr
 
 
 <Tabs groupId="platform">
+
+  <TabItem
+    value="A300"
+    label="A300"
+  >
+
+  #### 1. Download the Clearpath Firmware package from the Clearpath package server
+
+  On the robot computer, run the following commands:
+
+  ```
+  sudo apt update
+  sudo apt install ros-jazzy-clearpath-firmware
+  ```
+
+  #### 2. Prepare the robot
+
+  Skip this step for Husky A300.
+
+  </TabItem>
   <TabItem
     value="J100"
     label="J100"
@@ -21,14 +41,14 @@ Before flashing firmware, place your robot up on blocks or disengage the drivetr
 
   ```
   sudo apt-get update
-  sudo apt-get install ros-humble-clearpath-firmware
+  sudo apt-get install ros-jazzy-clearpath-firmware
   ```
 
   #### 2. Prepare the Robot
 
 :::note
 
-  The J100 MCU does not have an ethernet interface, and therefore cannot be flashed using the eternet bootloader. You must follow the subsequent steps to flash the J100 MCU over mini-USB.
+  The J100 MCU does not have an ethernet interface, and therefore cannot be flashed using the ethernet bootloader. You must follow the subsequent steps to flash the J100 MCU over mini-USB.
 
 :::
 
@@ -80,7 +100,7 @@ Before flashing firmware, place your robot up on blocks or disengage the drivetr
 
   ```
   sudo apt-get update
-  sudo apt-get install ros-humble-clearpath-firmware
+  sudo apt-get install ros-jazzy-clearpath-firmware
   ```
 
   #### 2. Prepare the Robot
@@ -88,7 +108,7 @@ Before flashing firmware, place your robot up on blocks or disengage the drivetr
 :::note
 
   Platforms with an Ethernet connection to the MCU have the option of flashing over USB or Ethernet.
-  If you are updating to ROS 2 Humble for the first time, you must use USB. If you are updating ROS 2 Humble firmware
+  If you are updating to ROS 2 Jazzy for the first time, you must use USB. If you are updating ROS 2 Jazzy firmware
   to a newer version, using Ethernet is recommended. Skip this step if flashing over Ethernet.
 
 :::
@@ -136,7 +156,7 @@ Before flashing firmware, place your robot up on blocks or disengage the drivetr
 
   ```
   sudo apt-get update
-  sudo apt-get install ros-humble-clearpath-firmware
+  sudo apt-get install ros-jazzy-clearpath-firmware
   ```
 
   #### 2. Prepare the Robot
@@ -144,7 +164,7 @@ Before flashing firmware, place your robot up on blocks or disengage the drivetr
 :::note
 
   Platforms with an Ethernet connection to the MCU have the option of flashing over USB or Ethernet.
-  If you are updating to ROS 2 Humble for the first time, you must use USB. If you are updating ROS 2 Humble firmware
+  If you are updating to ROS 2 Jazzy for the first time, you must use USB. If you are updating ROS 2 Jazzy firmware
   to a newer version, using Ethernet is recommended. Skip this step if flashing over Ethernet.
 
 :::
@@ -199,7 +219,7 @@ The Ridgeback's MCU is normally rotated 90 degrees when it is installed in the r
 
   ```
   sudo apt-get update
-  sudo apt-get install ros-humble-clearpath-firmware
+  sudo apt-get install ros-jazzy-clearpath-firmware
   ```
 
   #### 2. Prepare the Robot
@@ -207,7 +227,7 @@ The Ridgeback's MCU is normally rotated 90 degrees when it is installed in the r
 :::note
 
   Platforms with an Ethernet connection to the MCU have the option of flashing over USB or Ethernet.
-  If you are updating to ROS 2 Humble for the first time, you must use USB. If you are updating ROS 2 Humble firmware
+  If you are updating to ROS 2 Jazzy for the first time, you must use USB. If you are updating ROS 2 Jazzy firmware
   to a newer version, using Ethernet is recommended. Skip this step if flashing over Ethernet.
 
 :::
@@ -244,7 +264,7 @@ The Ridgeback's MCU is normally rotated 90 degrees when it is installed in the r
 
   ```
   sudo apt-get update
-  sudo apt-get install ros-humble-clearpath-firmware
+  sudo apt-get install ros-jazzy-clearpath-firmware
   ```
 
   #### 2. Prepare the Robot
@@ -252,7 +272,7 @@ The Ridgeback's MCU is normally rotated 90 degrees when it is installed in the r
 :::note
 
   Platforms with an Ethernet connection to the MCU have the option of flashing over USB or Ethernet.
-  If you are updating to ROS 2 Humble for the first time, you must use USB. If you are updating ROS 2 Humble firmware
+  If you are updating to ROS 2 Jazzy for the first time, you must use USB. If you are updating ROS 2 Jazzy firmware
   to a newer version, using Ethernet is recommended. Skip this step if flashing over Ethernet.
 
 :::
@@ -284,11 +304,20 @@ The Ridgeback's MCU is normally rotated 90 degrees when it is installed in the r
 Run the Clearpath firmware flash tool:
 
 ```
-source /opt/ros/humble/setup.bash
+source /opt/ros/jazzy/setup.bash
 ros2 run clearpath_firmware flash
 ```
 
 Select your platform, then select which method of flashing you would like to use.
+
+| Platform            | Flashing Method |
+| :------------------ | :-------------- |
+| Husky A300          | Ethernet        |
+| Jackal J100         | USB             |
+| Warthog W200        | USB or Ethernet |
+| Ridgeback R100      | USB or Ethernet |
+| Dingo DD100 / DO100 | USB or Ethernet |
+| Dingo DD150 / DO150 | USB or Ethernet |
 
 :::caution
 
@@ -306,6 +335,15 @@ If you flashed over Ethernet, skip this step.
 :::
 
 <Tabs groupId="platform">
+  <TabItem
+    value="A300"
+    label="A300"
+  >
+
+  After flashing, the robot powers off. Power the robot back on by pressing the Power button.
+
+  </TabItem>
+
   <TabItem
     value="J100"
     label="J100"
