@@ -237,7 +237,7 @@ sudo systemctl daemon-reload && sudo systemctl start clearpath-robot.service
   source /opt/ros/jazzy/setup.bash
   sudo apt install python3-vcstool
   cd ~/clearpath_ws
-  wget https://raw.githubusercontent.com/clearpathrobotics/clearpath_robot/main/dependencies.repos
+  wget https://raw.githubusercontent.com/clearpathrobotics/clearpath_robot/jazzy/dependencies.repos
   vcs import src < dependencies.repos
   cd ~/clearpath_ws/src
   git clone https://github.com/clearpathrobotics/clearpath_robot.git
