@@ -703,15 +703,56 @@ Ensure proper personal protective equipment is used when performing battery main
 
 <GettingNewPackages />
 
-### MCU Firmware Update
+### MCU Firmware Update  {#mcu_firmware_update}
 
-Customer updates of Husky firmware are not supported at this time. Contact [Support](#support) if
-Husky firmware updates are needed.
+Refer to [firmware update instructions](../../../../ros/installation/robot#firmware-update).
+Be sure to select the ROS 2 distribution that matches the ROS 2 distribution installed on your robot.
 
 ### Motor Controller Firmware Update {#maintenance_husky_motor_controller_firmware}
 
-Customer updates of Husky firmware are not supported at this time. Contact [Support](#support) if
-Husky firmware updates are needed.
+Use the following command to update the firmware on the motor controllers, using the serial number
+of your robot rather than `xxxxx`.
+
+:::caution
+
+Do NOT power off the robot while this command is running.
+
+:::
+
+```
+ros2 action send_goal /a300_xxxxx/platform/motors/update clearpath_motor_msgs/action/LynxUpdate {} -f
+```
+
+Once all four motor controllers have been updated, power cycle the robot.
+
+### Motor Controller Calibration  {#maintenance_husky_motor_calibration}
+
+The motor controllers are configured in the factory and do not normally to be reconfigured in the field.
+If you have been instructed by Clearpath Support to recalibrate, use the command below, using the serial number
+of your robot rather than `xxxxx`.
+
+:::caution
+
+Do NOT power off the robot while this command is running.
+
+:::
+
+:::info
+
+Ensure that the robot does not have its Emergency Stop engage while running this command.
+
+:::
+
+:::info
+
+Ensure that the robot is on a level surface with at least 1 metre of clearance in all directions
+before running this command.
+
+:::
+
+```
+ros2 action send_goal /a300_xxxxx/platform/motors/calibrate clearpath_motor_msgs/action/LynxCalibrate {} -f
+```
 
 ---
 

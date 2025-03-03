@@ -12,8 +12,8 @@ import ComputerNetworkingSetupInstall from "../../components/networking/_compute
 
 ## Operating System (OS) {#operating-system}
 
-ROS 2 Humble uses Ubuntu 22.04 as its Tier 1 operating system.
-Though other operating systems are supported, it is highly recommended to use Ubuntu 22.04. 
+ROS 2 Jazzy uses Ubuntu 24.04 as its Tier 1 operating system.
+Though other operating systems are supported, it is highly recommended to use Ubuntu 24.04. 
 The preferred method is using the Clearpath Robotics ISO image, which is covered in this section.
 
 :::note
@@ -22,16 +22,16 @@ The Clearpath Robotics ISO image only targets x86 computers (`amd64` architectur
 
 :::
 
-Clearpath provides a lightly customized installation image of Ubuntu 22.04 that has the needed script to setup the robot.
+Clearpath provides a lightly customized installation image of Ubuntu 24.04 that has the needed script to setup the robot.
 To install the software on a physical robot through the Clearpath Robotics ISO image, you will first need a USB drive of at least 4 GB
 to create the installation media, an ethernet cable, a monitor, and a keyboard.
 
-1.  Download the [ROS 2 Humble ISO image](https://packages.clearpathrobotics.com/stable/images/1.0.0/).
+1.  Download the [ROS 2 Jazzy ISO image](https://packages.clearpathrobotics.com/stable/images/2.0.0/).
 
 2.  Copy the image to a USB drive using `unetbootin`, `rufus`, `balena etcher`, or a similar program. For example:
 
     ```
-    sudo unetbootin isofile="clearpath-jammy-humble-autoinstall.iso"
+    sudo unetbootin isofile="clearpath-noble-jazzy-autoinstall.iso"
     ```
 
 3.  Connect your robot computer to internet access (via wired Ethernet), a keyboard, and a monitor.
@@ -55,8 +55,8 @@ to create the installation media, an ethernet cable, a monitor, and a keyboard.
 5.  The setup process will be automated and may take a long time depending on the speed of your internet connection.
 6.  Once the setup process is complete, the computer will turn off.
     Please unplug the USB drive and turn the computer back on.
-7.  On first boot, the username will be `administrator` and the password will be `clearpath`.
-    You should use the `passwd` utility to change the `administrator` account password.
+7.  On first boot, the username will be `robot` and the password will be `clearpath`.
+    You should use the `passwd` utility to change the `robot` account password.
 8.  Log on to the computer and run `bash -e clearpath_computer_installer.sh` to install the needed software.
     This will take a while to complete and has a prompts that must be answered.
 
@@ -107,7 +107,7 @@ SSID, and `PASSWORD_GOES_HERE` with your Wi-Fi password.
 Save the file and call `sudo netplan apply` to apply the changes. Check `ip a` again to make sure that
 an IP address has been assigned to your Wi-Fi interface.
 
-You should now be able to SSH into the robot by calling `ssh administrator@<robot_ip>` from an offboard computer.
+You should now be able to SSH into the robot by calling `ssh robot@<robot_ip>` from an offboard computer.
 
 :::note
 
@@ -121,11 +121,11 @@ Replace `<interface>` with the name of your disabled Wi-Fi interface.
 The robot's computer can also be connected to a DHCP network over Ethernet. Connect an Ethernet cable
 to the built-in Ethernet port on the robot's computer and check that an IP has been assigned with `ip a`.
 
-You should now be able to SSH into the robot by calling `ssh administrator@<robot_ip>` from an offboard computer.
+You should now be able to SSH into the robot by calling `ssh robot@<robot_ip>` from an offboard computer.
 
-## Firmware Update
+## Firmware Update  {#firmware-update}
 
-All platforms with the exception of the A200 will require a firmware update to run ROS 2 Humble.
+All platforms with the exception of the A200 will require a firmware update to run ROS 2 Jazzy.
 
 <ClearpathFirmware />
 
@@ -172,10 +172,10 @@ sudo systemctl daemon-reload && sudo systemctl start clearpath-robot.service
            know what you are doing.</summary>
   <p>
 
-  #### ROS 2 Humble
+  #### ROS 2 Jazzy
 
-  Follow the [official instructions](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html)
-  for installing ROS 2 Humble from debian packages.
+  Follow the [official instructions](https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debs.html)
+  for installing ROS 2 Jazzy from debian packages.
 
   #### Clearpath Package Server
 
@@ -217,7 +217,7 @@ sudo systemctl daemon-reload && sudo systemctl start clearpath-robot.service
   metapackage can be installed.
 
   ```
-  sudo apt install ros-humble-clearpath-robot
+  sudo apt install ros-jazzy-clearpath-robot
   ```
 
   Installing this package will also install all dependencies required to run any Clearpath robot and supported sensors,
@@ -234,10 +234,10 @@ sudo systemctl daemon-reload && sudo systemctl start clearpath-robot.service
   **2. Import dependencies**
 
   ```
-  source /opt/ros/humble/setup.bash
+  source /opt/ros/jazzy/setup.bash
   sudo apt install python3-vcstool
   cd ~/clearpath_ws
-  wget https://raw.githubusercontent.com/clearpathrobotics/clearpath_robot/main/dependencies.repos
+  wget https://raw.githubusercontent.com/clearpathrobotics/clearpath_robot/jazzy/dependencies.repos
   vcs import src < dependencies.repos
   cd ~/clearpath_ws/src
   git clone https://github.com/clearpathrobotics/clearpath_robot.git
@@ -257,7 +257,7 @@ sudo systemctl daemon-reload && sudo systemctl start clearpath-robot.service
   right under where ROS is sourced:
 
   ```
-  source /home/administrator/clearpath_ws/install/setup.bash
+  source /home/robot/clearpath_ws/install/setup.bash
   ```
 
 
@@ -289,7 +289,7 @@ sudo systemctl daemon-reload && sudo systemctl start clearpath-robot.service
   Clearpath robot services can now be installed with the following command:
 
   ```
-  source /opt/ros/humble/setup.bash
+  source /opt/ros/jazzy/setup.bash
   ros2 run clearpath_robot install
   sudo systemctl enable clearpath-robot
   ```

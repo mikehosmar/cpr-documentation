@@ -14,184 +14,21 @@ The lighting node will publish the current lighting command directly to the MCU.
 
 ## Lighting States
 
-<table>
-  <thead>
-    <tr>
-      <th>Lighting State</th>
-      <th>Lighting Pattern</th>
-      <th>Priority</th>
-      <th>User commands allowed</th>
-      <th>Platform</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Battery Fault</td>
-      <td>
-      <center>
-        <img
-          src={require("/img/robot_images/common_images/lighting_images/battery_fault.gif").default}
-          width="100"
-        />
-      </center>
-      </td>
-      <td>0</td>
-      <td>No</td>
-      <td>D100, D150, R100, W200</td>
-    </tr>
-    <tr>
-      <td>Shore Power Fault</td>
-      <td>
-      <center>
-        <img
-          src={require("/img/robot_images/common_images/lighting_images/shore_fault.gif").default}
-          width="100"
-        />
-      </center>
-      </td>
-      <td>1</td>
-      <td>No</td>
-      <td>D100, D150</td>
-    </tr>
-    <tr>
-      <td>Shore Power and Charged</td>
-      <td>
-      <center>
-        <img
-          src={require("/img/robot_images/common_images/lighting_images/shore_and_charged.gif").default}
-          width="100"
-        />
-      </center>
-      </td>
-      <td>2</td>
-      <td>Yes</td>
-      <td>D100, D150</td>
-    </tr>
-    <tr>
-      <td>Shore Power and Charging</td>
-      <td>
-      <center>
-        <img
-          src={require("/img/robot_images/common_images/lighting_images/shore_and_charging.gif").default}
-          width="100"
-        />
-      </center>
-      </td>
-      <td>3</td>
-      <td>Yes</td>
-      <td>D150</td>
-    </tr>
-    <tr>
-      <td>Shore Power</td>
-      <td>
-      <center>
-        <img
-          src={require("/img/robot_images/common_images/lighting_images/shore_power.png").default}
-          width="100"
-        />
-      </center>
-      </td>
-      <td>4</td>
-      <td>Yes</td>
-      <td>D100, D150</td>
-    </tr>
-    <tr>
-      <td>Charged</td>
-      <td>
-      <center>
-        <img
-          src={require("/img/robot_images/common_images/lighting_images/charged.png").default}
-          width="100"
-        />
-      </center>
-      </td>
-      <td>5</td>
-      <td>Yes</td>
-      <td>D100, D150, R100, W200</td>
-    </tr>
-    <tr>
-      <td>Charging</td>
-      <td>
-      <center>
-        <img
-          src={require("/img/robot_images/common_images/lighting_images/charging.gif").default}
-          width="100"
-        />
-      </center>
-      </td>
-      <td>6</td>
-      <td>Yes</td>
-      <td>D150, R100</td>
-    </tr>
-    <tr>
-      <td>Stopped</td>
-      <td>
-      <center>
-        <img
-          src={require("/img/robot_images/common_images/lighting_images/stopped.gif").default}
-          width="100"
-        />
-      </center>
-      </td>
-      <td>7</td>
-      <td>No</td>
-      <td>D100, D150, R100, W200</td>
-    </tr>
-    <tr>
-      <td>Needs Reset</td>
-      <td>
-      <center>
-        <img
-          src={require("/img/robot_images/common_images/lighting_images/needs_reset.gif").default}
-          width="100"
-        />
-      </center>
-      </td>
-      <td>8</td>
-      <td>No</td>
-      <td>R100</td>
-    </tr>
-    <tr>
-      <td>Low Battery</td>
-      <td>
-      <center>
-        <img
-          src={require("/img/robot_images/common_images/lighting_images/low_battery.gif").default}
-          width="100"
-        />
-      </center>
-      </td>
-      <td>9</td>
-      <td>No</td>
-      <td>D100, D150, R100, W200</td>
-    </tr>
-    <tr>
-      <td>Driving</td>
-      <td>
-      <center>
-        <img
-          src={require("/img/robot_images/common_images/lighting_images/driving.png").default}
-          width="100"
-        />
-      </center>
-      </td>
-      <td>10</td>
-      <td>Yes</td>
-      <td>D100, D150, R100, W200</td>
-    </tr>
-    <tr>
-      <td>Idle</td>
-      <td>
-      <center>
-        <img
-          src={require("/img/robot_images/common_images/lighting_images/idle.png").default}
-          width="100"
-        />
-      </center>
-      </td>
-      <td>11</td>
-      <td>Yes</td>
-      <td>D100, D150, R100, W200</td>
-    </tr>
-  </tbody>
-</table>
+| Lighting State | Lighting Pattern | Priority | User commands allowed | Platform |
+| :------------- | :--------------- | :------- | :-------------------- | :------- |
+| Light Control Fault (or boot failure)     | <img src="/img/robot_images/common_images/lighting_images/light_control_fault.gif" width="100"/> | N/A | No | All |
+| Battery Fault                             | <img src="/img/robot_images/common_images/lighting_images/battery_fault.gif" width="100"/> | 0 | No | D100, D150, R100, W200, A300 |
+| Shore Power Fault                         | <img src="/img/robot_images/common_images/lighting_images/shore_fault.gif" width="100"/> | 1 | No | D100, D150 |
+| Motor Fault                               | <img src="/img/robot_images/common_images/lighting_images/motor_fault.gif" width="100"/> | 2 | No | A300 |
+| Motors Overheated                         | <img src="/img/robot_images/common_images/lighting_images/motor_overheated.gif" width="100"/> | 3 | No | A300 |
+| Motors Throttled                          | <img src="/img/robot_images/common_images/lighting_images/motor_throttled.gif" width="100"/> | 4 | Yes | A300 |
+| Shore Power and Charged                   | <img src="/img/robot_images/common_images/lighting_images/shore_and_charged.gif" width="100"/> | 5 | Yes | D100, D150 |
+| Shore Power and Charging                  | <img src="/img/robot_images/common_images/lighting_images/shore_and_charging.gif" width="100"/> | 6 | Yes | D150 |
+| Shore Power                               | <img src="/img/robot_images/common_images/lighting_images/shore_power.png" width="100"/> | 7 | Yes | D100, D150 |
+| Charged                                   | <img src="/img/robot_images/common_images/lighting_images/charged.png" width="100"/> | 8 | Yes | D100, D150, R100, W200, A300 |
+| Charging (wired or wireless)              | <img src="/img/robot_images/common_images/lighting_images/charging.gif" width="100"/> | 9 | Yes | D150, R100, A300 |
+| Needs Reset (after Emergency Stop)        | <img src="/img/robot_images/common_images/lighting_images/needs_reset.gif" width="100"/> | 10 | No | R100, A300 |
+| Emergency Stop Engaged                    | <img src="/img/robot_images/common_images/lighting_images/stopped.gif" width="100"/> | 11 | No | D100, D150, R100, W200, A300 |
+| Low Battery                               | <img src="/img/robot_images/common_images/lighting_images/low_battery.gif" width="100"/> | 12 | No | D100, D150, R100, W200, A300 |
+| Driving                                   | <img src="/img/robot_images/common_images/lighting_images/driving.png" width="100"/> | 13 | Yes | D100, D150, R100, W200, A300 |
+| Idle                                      | <img src="/img/robot_images/common_images/lighting_images/idle.png" width="100"/> | 14 | Yes | D100, D150, R100, W200, A300 |

@@ -1,6 +1,6 @@
 ---
-title: Upgrading to Humble
-sidebar_label: Upgrading to Humble
+title: Upgrading to Jazzy
+sidebar_label: Upgrading to Jazzy
 sidebar_position: 1
 toc_min_heading_level: 2
 toc_max_heading_level: 4
@@ -11,20 +11,20 @@ import TabItem from "@theme/TabItem";
 
 :::note
 
-Users who are installing ROS 2 Humble onto a new robot computer can skip to [Robot Installation](robot.mdx).
+Users who are installing ROS 2 Jazzy onto a new robot computer can skip to [Robot Installation](robot.mdx).
 
 :::
 
 :::note
 
 Check the [list of supported platforms](../../ros/ros.mdx#supported-platforms) to make sure that your robot is currently
-supported on ROS 2 Humble.
+supported on ROS 2 Jazzy.
 
 :::
 
-ROS 2 Humble is the first ROS distribution that runs on Ubuntu 22.04. As a result, any robots running ROS 1 or
-ROS 2 Foxy will have upgrade their operating system. It is highly recommended to back up any important files on the robot
-before proceeding, especially for highly customized robots.
+ROS 2 Jazzy is the first ROS distribution that runs on Ubuntu 24.04. As a result, any robots running ROS 1,
+ROS 2 Foxy, or ROS 2 Humble will have upgrade their operating system. It is highly recommended to back up any
+important files on the robot before proceeding, especially for highly customized robots.
 
 :::caution
 
@@ -39,7 +39,7 @@ image if you need to revert back to your previous configuration. The easiest app
 a removable (USB or similar) hard drive to the robot's computer, or to unplug the robot's hard drive and insert
 it into a computer or workstation. You can then use a tool such as [CloneZilla](https://clonezilla.org/) or `dd`
 to write a backup image of your robot's hard drive onto another hard drive. Alternatively, you can simply replace
-the robot computer's hard drive, reserving the drive and installing a new one to use with Humble.
+the robot computer's hard drive, reserving the drive and installing a new one to use with Jazzy.
 
 ## Saving important files
 
@@ -53,7 +53,7 @@ There are several places in the filesystem you should specifically look for cust
 | `/etc/ros/setup.bash`                         | May contain environment variables for your configuration.                                                                                                 |
 | `~/catkin_ws/` or `~/colcon_ws/`              | ROS workspace that may contain custom ROS packages.                                                                                                       |
 
-Please save the files listed above and use them as a reference during Humble configuration.
+Please save the files listed above and use them as a reference during Jazzy configuration if upgrading from ROS 1.
 
 ## Backup Software (ROS 1 only)
 
@@ -130,8 +130,9 @@ back these up yourself; `backup.sh` will not do this for you.
 ## Converting Environment Variables to Clearpath Config
 
 The environment variables used to define your robot in ROS 1 and ROS 2 Foxy can be converted to the `robot.yaml`
-format to maintain the same robot description when you upgrade to ROS 2 Humble.
+format to maintain the same robot description when you upgrade to ROS 2 Jazzy. 
 Below are some common examples. Visit the [robot.yaml documentation](../config/yaml/overview.mdx) for more details.
+If upgrading from ROS 2 Humble, keep a copy of your `robot.yaml` for use with ROS 2 Jazzy.
 
 ### Attachments
 
