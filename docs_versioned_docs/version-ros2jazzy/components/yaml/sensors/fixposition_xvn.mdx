@@ -58,3 +58,13 @@ For specifics on the way Clearpath's configuration system launches the `fixposit
 see the Fixposition [launch file](https://github.com/clearpathrobotics/clearpath_robot/blob/jazzy/clearpath_sensors/launch/fixposition.launch.py)
 and the [default parameter file](https://github.com/clearpathrobotics/clearpath_robot/blob/jazzy/clearpath_sensors/config/fixposition.yaml)
 in `clearpath_sensors`.
+
+#### Antenna configuration
+
+The Fixposition Vision-RTK2 requires two GNSS antennas. The position and type of each antenna
+is defined in the `antennas` array. Each `antenna` instance may contain the following attributes:
+
+- `type`: the shape of the antenna: `spherical` (default), `helical`, or `patch`
+- `parent`: the parent link of the antenna in the URDF. `default_mount` if unspecified
+- `xyz`: the XYZ offset from the `parent` link to the antenna's mounting point
+- `rpy`: the RPY offset relative to the `parent` link
