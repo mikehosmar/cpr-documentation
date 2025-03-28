@@ -13,56 +13,106 @@ import StandardClearpathBridgeSetup from "../../components/networking/_standard_
 
 ### Connecting to an Existing Wi-Fi Network
 
-Use the `clearpath-computer-setup` tool to connect your robot to your existing wireless network.
+Use `netplan` to connect your robot to an existing wireless network.
 
-1. Run `sudo clearpath-computer-setup`
-1. Navigate to **Netplan Setup**
-   <center>
-     <figure>
-       <img
-         src={require("./img/clearpath_setup-netplan.png").default}
-         width="888"
-       />
-     </figure>
-   </center>
-1. Navigate to **WiFi Setup**
-   <center>
-     <figure>
-       <img
-         src={require("./img/clearpath_setup-wifi.png").default}
-         width="888"
-       />
-     </figure>
-   </center>
-1. Select the wireless interface you wish to configure. Most computers will only have one wireless
-   interface, but some may have more than one.
-   <center>
-     <figure>
-       <img
-         src={require("./img/clearpath_setup-interface.png").default}
-         width="888"
-       />
-     </figure>
-   </center>
-1. Enter the SSID and password for your wireless network.
-   <center>
-     <figure>
-       <img
-         src={require("./img/clearpath_setup-ssid.png").default}
-         width="888"
-       />
-     </figure>
-   </center>
-1. Select **Save Settings** and press `ENTER`.
+First, determine the name of your wireless interface by running `iwconfig` you should see
+an entry similar to this:
 
-### Custom Networking
+```
+wlp59s0   IEEE 802.11  ESSID:off/any
+          Mode:Managed  Access Point: Not-Associated   Tx-Power=off
+          Retry short limit:7   RTS thr:off   Fragment thr:off
+          Power Management:on
+```
 
-The `clearpath-computer-setup` tool can also be used to set up custom network interfaces.
+The interface name is in the left column, starting with `w`.
 
-1. Navigate to the **Netplan Setup** menu and use the bridge, Ethernet, or Wi-Fi setup menus to add configurations.
-2. Once you are done configuring, return to the **Netplan Setup** menu and select **Write Configuration YAML**. You will be prompted for a file name. The file should be
-placed under `/etc/netplan/` to take effect, and the naming convention is a two digit number followed by a unique name.
-For example, `/etc/netplan/50-home-wifi.yaml`.
+Once you have identified your interface, edit or create a file
+called `/etc/netplan/60-wifi.yaml` containing the following:
+
+```yaml
+network:
+  wifis:
+    MY_WIFI_INTERFACE:
+      optional: true
+      access-points:
+        MY_WIFI_SSID:
+          password: MY_WIFI_PASSWORD
+      dhcp4: true
+```
+
+with the following substitutions:
+1. Replace `MY_WIFI_INTERFACE` with the name of the interface you identified in the first step,
+   e.g. `wlp59s0`
+2. Replace `MY_WIFI_SSID` with the SSID of your network.
+3. Replace `MY_WIFI_PASSWORD` with your network's password.
+
+For example:
+
+```yaml
+network:
+  wifis:
+    wlp59s0:
+      optional: true
+      access-points:
+        BabCom:
+          password: peekaboo
+      dhcp4: true
+```
+
+This configuration will connect your robot via DHCP to your WPA2/3 wireless network. If you
+need to use a static IP address, modify the file to contain the following:
+
+```yaml
+network:
+  wifis:
+    MY_WIFI_INTERFACE:
+      optional: true
+      access-points:
+        MY_WIFI_SSID:
+          password: MY_WIFI_PASSWORD
+      dhcp4: false
+      dhcp4-overrides:
+        send-hostname: true
+      addresses:
+        - MY_STATIC_IP/MY_SUBNET
+      nameservers:
+        addresses:
+          - MY_NAMESERVER
+```
+
+with the same substitutions noted earlier, plus
+1. Replace `MY_STATIC_IP` with the desired static IP address.
+2. Replace `MY_SUBNET` with the length of your network's subnet mask (typically `24` or `16`)
+3. Replace `MY_NAMESERVER` with the IP address of your DNS server You may add multiple DNS servers
+   with each one on its own line.
+
+For example:
+
+```yaml
+network:
+  wifis:
+    wlp59s0:
+      optional: true
+      access-points:
+        BabCom:
+          password: peekaboo
+      dhcp4: false
+      dhcp4-overrides:
+        send-hostname: true
+      addresses:
+        - 10.25.0.134/16
+      nameservers:
+        addresses:
+          - 10.25.0.10
+          - 8.8.8.8
+          - 8.8.4.4
+```
+
+Once you have edited the netplan configuration file, run the following two commands:
+1. `sudo netplan --debug generate` -- this will verify that the netplan configuration files can
+   be read properly. Correct any errors before proceeding.
+2. `sudo netplan apply` -- this will apply the new configuration to your network interfaces.
 
 :::note
 
