@@ -52,6 +52,8 @@ After editing the file, run the following commands to apply the changes:
 
 1. `sudo netplan --debug generate` -- this will verify your netplan configuration files and
    notify you if there are errors. Correct any errors before proceeding.
-2. `sudo netplan apply` -- this will apply the new configuration. Note that if you are logged in
+2. `sudo netplan try` -- this will try running the new configuration, but will automatically
+   roll back if it doesn't work correctly.
+3. `sudo netplan apply` -- this will apply the new configuration. Note that if you are logged in
    over SSH from a remote computer you may lose your SSH connection if the active interface was
    modified.

@@ -112,7 +112,9 @@ network:
 Once you have edited the netplan configuration file, run the following two commands:
 1. `sudo netplan --debug generate` -- this will verify that the netplan configuration files can
    be read properly. Correct any errors before proceeding.
-2. `sudo netplan apply` -- this will apply the new configuration to your network interfaces.
+2. `sudo netplan try` -- this will try running the new configuration, but will automatically
+   roll back if it doesn't work correctly.
+3. `sudo netplan apply` -- this will apply the new configuration to your network interfaces.
 
 :::note
 
