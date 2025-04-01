@@ -100,6 +100,50 @@ By running the **bash**, **description**, **launch**, and **parameter** generato
   `}
 />
 
+### Platform Extras
+By running the **launch** generator, the launch file to run the user-specified extra platform nodes is created in the directory **/etc/clearpath/platform-extras**.
+The top level launch file to start all platform related nodes is the **platform-extras-service.launch.py**, which is generated in the **/etc/clearpath/platform-extras/launch**
+directory by the **launch** generator.
+
+<Mermaid
+  value={`
+    %%{ \
+      init: { \
+        'themeVariables': { \
+          'fontSize': '16px' \
+        }, \
+        'flowchart':  { \
+          'curve': 'stepAfter', \
+          'rankSpacing': 20 , \
+          'nodeSpacing': 50, \
+          'diagramPadding': 0 \
+        } \
+      } \
+    }%%
+    flowchart LR
+      %% Robot Yaml
+      yaml(((robot.yaml)))
+      %% Generators
+      g_bash{{<a href='https://github.com/clearpathrobotics/clearpath_common/blob/humble/clearpath_generator_common/clearpath_generator_common/bash/generator.py'><b>Bash Generator</b></a>}}
+      g_launch{{<a href='https://github.com/clearpathrobotics/clearpath_robot/blob/jazzy/clearpath_generator_robot/clearpath_generator_robot/launch/generator.py'><b>Launch Generator</b></a>}}
+      %% Generated Files
+      bash([<div><b>setup.bash</b></div><div>/etc/clearpath/setup.bash</div>])
+      launch[[<div><b>platform-service.launch.py</b></div><div>/etc/clearpath/platform/launch/platform-service.launch.py</div>]]
+      subgraph Clearpath Generators
+        yaml-.-g_bash
+        yaml-.-g_launch
+      end
+      g_bash-->bash
+      g_launch-->launch
+      subgraph Clearpath Platform Service
+        bash-.->launch
+      end
+      classDef generator stroke-width:4px
+      class g_bash generator
+      class g_launch generator
+  `}
+/>
+
 ### Sensors Generation
 Using the **parameter** and **launch** file generators, a pair of files is created for each sensor defined in the configuration file. Each sensor is enumerated given its order in sensor section of the **robot.yaml**. For example, if two cameras are added, then the first will be named **camera_0** and the second **camera_1**, irrespective of the model of camera. Each sensor launch file generated is included in the top level **sensors-service.launch.py** which is ran by the service.
 <Mermaid
