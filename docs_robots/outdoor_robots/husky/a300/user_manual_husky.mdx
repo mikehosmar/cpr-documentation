@@ -14,7 +14,7 @@ import ComponentSafetyWarning from "/components/safety_warning.mdx";
 
 <ComponentIntroductionHusky />
 
-## Important SAFETY INFORMATION
+## Important SAFETY INFORMATION  {#important-safety-information}
 
 :::safety-danger
 
@@ -247,7 +247,7 @@ Husky A300 may move unexpectedly.
 
 **Always wear hearing protection while near Husky A300.**
 
-Husky A300 may emit noise up to 80 dB.
+Husky A300 may emit noise up to 80 dBA at a distance of 10 cm from the robot.
 
 :::
 
@@ -755,7 +755,7 @@ will affect the terminal speed of the robot when the Emergency Stop is engaged.
 The performance values outlined below can be affected by various environmental factors such as
 terrain type and should be treated as a reference only. Exact limits should be determined by the
 user in the target operating environment. It is the responsibility of the user
-to ensure that no hazards are present in the the target operating environment.
+to ensure that no hazards are present in the target operating environment.
 
 :::
 
@@ -767,6 +767,37 @@ to ensure that no hazards are present in the the target operating environment.
 | 100 kg       | 0°       | 0 m/s |
 | 0 kg         | 15°      | 0.5 m/s or less |
 | 100 kg       | 15°      | 1.25 m/s or less |
+
+##### Stopping Distances
+
+:::safety-warning
+
+**Always confirm stopping distances in the target environment.**
+
+The performance values outlined below can be affected by various environmental factors
+(terrain type, wet/icy surfaces, etc) and should be treated as a reference only.
+Exact limits should be determined by the user in the target operating environment.
+It is the responsibility of the user to ensure that no hazards are present in the
+target operating environment.
+
+:::
+
+<br/>
+
+:::note
+
+The report stopping distances are based on the default deceleration settings.
+This setting is configurable (see [ROS Parameters](/docs/ros/config/yaml/platform/extras)
+for details).
+
+:::
+
+| Payload Mass | Incline  | Surface Type  | Stopping Distance  | 
+| :----------- | :------- | :------------ | :------------------|
+| 0 kg         | 0°       | High friction | 0.5 m |
+| 100 kg       | 0°       | High friction | 0.7 m |
+| 0 kg         | 15°      | High friction | 0.5 m |
+| 100 kg       | 15°      | High friction | 1.0 m |
 
 ### Recommended Safe Work Procedures
 
@@ -807,10 +838,10 @@ In case of a collision:
 | :----------------------------- | :----------------------------------------------------------------------- |
 | Dimension, Length              | 990 mm                                                                   |
 | Dimension, Width               | 698 mm                                                                   |
-| Dimension, Height              | 381 mm                                                                   |
-| Track Width                    | 562 mm                                                                   |
+| Dimension, Height              | 372 mm                                                                   |
+| Track Width                    | 566 mm                                                                   |
 | Wheelbase Length               | 512 mm                                                                   |
-| Ground Clearance               | 139 mm                                                                   |
+| Ground Clearance               | 130 mm                                                                   |
 | Mass                           | 80 kg                                                                    |
 | Maximum Payload¹               | 100 kg                                                                   |
 | All-terrain Payload²           | 50 kg                                                                    |
@@ -829,7 +860,7 @@ In case of a collision:
 | Environmental                  | IP54                                                                     |
 
 _¹ Continuous operation on relatively flat terrain with wide turns._ <br />
-_² Robot climbing 30° grade with high-mounted payload, or turning in place in high-friction conditions._ <br />
+_² Robot climbing 30° grade with high-mounted payload, or turning in place in high-friction conditions such as asphalt, concrete, and carpet._ <br />
 _³ Maximum speed should be limited to 1 m/s in off-road conditions when the payload exceeds 50 kg._ <br />
 _⁴ See also [Important System Limits](#important-system-limits) for additional considerations related to slopes._ <br />
 _⁵ Robot must be powered on at a minimum temperature of 0 °C._ <br />
@@ -964,8 +995,8 @@ the `/a300_00000/platform/cmd_lights` topic (adjusting for your Husky's serial n
 | Motor Fault                               | <img src="/img/robot_images/common_images/lighting_images/motor_fault.gif" width="100"/> | An error has been detected a the motor or its controller, with the flashing light corresponding to the motor with the fault (eg. front right motor fault shown). Please contact support. |
 | Motors Overheated                         | <img src="/img/robot_images/common_images/lighting_images/motor_overheated.gif" width="100"/> | One or more motors are overheated. Allow the system to cool down before attempting to drive again. If the issue persists, please contact support. |
 | Motors Throttled                          | <img src="/img/robot_images/common_images/lighting_images/motor_throttled.gif" width="100"/> | Motor output has been reduced as one or more motors are beginning to overheat. Drive at reduced speeds or allow the system to cool down before attempting to drive again. If the issue persists, please contact support. |
-| Charged                                   | <img src="/img/robot_images/common_images/lighting_images/shore_and_charged.gif" width="100"/> | The robot's batteries are charged fully. Shore power is available for the robot to operate (excluding drive motors). |
-| Charging (wired or wireless)              | <img src="/img/robot_images/common_images/lighting_images/shore_and_charging.gif" width="100"/> | The robot's batteries are being charged, either from the wired/manual charger or the wireless charger. This also provides shore power for the robot to operate (excluding drive motors). |
+| Charged                                   | <img src="/img/robot_images/common_images/lighting_images/charged.png" width="100"/> | The robot's batteries are charged fully. Shore power is available for the robot to operate (excluding drive motors). |
+| Charging (wired or wireless)              | <img src="/img/robot_images/common_images/lighting_images/charging.gif" width="100"/> | The robot's batteries are being charged, either from the wired/manual charger or the wireless charger. This also provides shore power for the robot to operate (excluding drive motors). |
 | Emergency Stop Engaged                    | <img src="/img/robot_images/common_images/lighting_images/stopped.gif" width="100"/> | Emergency Stop mode is engaged. To disengage, twist both red mushroom buttons on the robot to ensure that they are unlatched and press the Safety Restart button. |
 | Needs Safety Restart (after Emergency Stop) | <img src="/img/robot_images/common_images/lighting_images/needs_reset.gif" width="100"/> | The Emergency Stop buttons have been disengaged but the Safety Restart button still needs to be pressed to resume driving. |
 | Low Battery                               | <img src="/img/robot_images/common_images/lighting_images/low_battery.gif" width="100"/> | The robot's batteries are in a low charge state. Connect the robot to a charger. |
@@ -1095,6 +1126,8 @@ Only change the key switch position while the robot is powered off. Otherwise, t
 
 :::
 
+<br/>
+
 :::safety-caution
 
 The key for Wireless Emergency Stop Bypass must be stored in a secure location and used only be a trained technician that
@@ -1144,8 +1177,8 @@ and 6-battery configurations.
 
 #### Computer
 
-Husky is equipped with an Intel-based computer in a Mini-ITX form factor. Several SKUs are possible
-depending on the desired performance of the system.
+Husky A300 is equipped with an Intel-based computer in a Mini-ITX form factor. Several SKUs are possible
+depending on the desired performance of the system. 
 
 #### GPU (Optional)
 
@@ -1170,6 +1203,11 @@ connection. See also [Husky Networking](#husky-networking).
 
 Husky can be equipped with two, four, or six batteries. These batteries are not hot-swappable.
 Refer to [Maintenance](maintenance_husky) for details on battery maintenance.
+
+#### USB Hub (Optional, not shown)
+
+An optional USB hub can be added and connected to the computer to increase the number of USB
+ports available. 
 
 ### Autonomous Mobile Platform (AMP) Kit
 
@@ -1260,7 +1298,7 @@ Your Husky A300 base platform shipment contains the following:
 If you purchased the AMP variant, standard payload modules or custom integration services with Husky, then additional equipment
 will be included per your specific configuration, plus further documentation as required.
 
-### Unboxing the Husky A300
+### Unboxing the Husky A300  {#unboxing-a300}
 
 Follow the steps below to remove Husky A300 from its crate.
 
@@ -1359,7 +1397,7 @@ The robot may move unexpectedly.
   </figure>
 </center>
 
-### Starting Up
+### Starting Up  {#starting-up}
 
 Before turning on Husky the first time, place Husky "up on blocks", making sure that the wheels are clear
 of the ground. This reduces hazards while becoming familiar with how the various subsystems work.
@@ -1676,7 +1714,7 @@ In slow mode, the maximum robot speed is 0.3 m/s; in fast mode, the maximum robo
   </figure>
 </center>
 
-### Using ROS
+### Using ROS  {#using-ros}
 
 Robot Operating System (ROS) is an extensible framework for controlling and working with robotic systems.
 Clearpath Robotics recommends using ROS with your robot. If this is your first time using ROS, it is strongly
