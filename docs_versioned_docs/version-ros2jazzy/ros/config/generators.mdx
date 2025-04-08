@@ -128,14 +128,14 @@ directory by the **launch** generator.
       g_launch{{<a href='https://github.com/clearpathrobotics/clearpath_robot/blob/jazzy/clearpath_generator_robot/clearpath_generator_robot/launch/generator.py'><b>Launch Generator</b></a>}}
       %% Generated Files
       bash([<div><b>setup.bash</b></div><div>/etc/clearpath/setup.bash</div>])
-      launch[[<div><b>platform-service.launch.py</b></div><div>/etc/clearpath/platform/launch/platform-service.launch.py</div>]]
+      launch[[<div><b>platform-extras-service.launch.py</b></div><div>/etc/clearpath/platform/launch/platform-extras-service.launch.py</div>]]
       subgraph Clearpath Generators
         yaml-.-g_bash
         yaml-.-g_launch
       end
       g_bash-->bash
       g_launch-->launch
-      subgraph Clearpath Platform Service
+      subgraph Clearpath Platform Extras Service
         bash-.->launch
       end
       classDef generator stroke-width:4px
