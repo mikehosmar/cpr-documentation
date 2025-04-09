@@ -169,7 +169,7 @@ This circuit board has connectors for: power, fans, relays, GPIOs, auxiliary inp
 | Purpose                                                      | Label on the circuit board   | Connector on the circuit board | Mating connector | Mating connector's crimp                                                               | Crimping tool    |
 | :----------------------------------------------------------- | :--------------------------- | :----------------------------- | :--------------- | :------------------------------------------------------------------------------------- | :--------------- |
 | <a href="#user-power-connections">User Power Connections</a> | USER 1 - USER 8              | Molex 0039296088               | Molex 0039012080 | Molex 0039000140 <em>(AWG 22-28)</em><br/>Or<br/>Molex 0039000073 <em>(AWG 18-24)</em> | Molex 0638191000 |
-|                                                              | EXP 1 - EXP 2                | Molex 1720650202               | Molex 1700010102 | Molex 1720630311 <em>(AWG 14-16)</em><br />Or<br/>Molex 1720630312 <em>(AWG 12)</em>   | Molex 2238631200 |
+| <a href="#expansion-power">Expansion Power</a>               | EXP 1 - EXP 2                | Molex 1720650202               | Molex 1700010102 | Molex 1720630311 <em>(AWG 14-16)</em><br />Or<br/>Molex 1720630312 <em>(AWG 12)</em>   | Molex 2238631200 |
 | <a href="#aux-inputs">AUX Inputs</a>                         | AUX1 IN, AUX2 IN, AUX3 IN    | TE 3-794682-6                  | TE 794617-6      | TE 1-794606-1 <em>(AWG 20-24)</em><br/>Or<br/>TE 1-794607-1 <em>(AWG 26-30)</em>       | TE 91391-1       |
 | <a href="#aux-outputs">AUX Outputs</a>                       | AUX1 OUT, AUX2 OUT, AUX3 OUT | TE 3-794682-8                  | TE 794617-8      | TE 1-794606-1 <em>(AWG 20-24)</em><br/>Or<br/>TE 1-794607-1 <em>(AWG 26-30)</em>       | TE 91391-1       |
 | <a href="#gpio">GPIO</a>                                     | GPIO                         | TE 4-794680-6                  | TE 1-794617-6    | TE 1-794606-1 <em>(AWG 20-24)</em><br/>Or<br/>TE 1-794607-1 <em>(AWG 26-30)</em>       | TE 91391-1       |
@@ -281,6 +281,33 @@ User power is enabled by default shortly after the robot first powers up,
 regardless of its state when the robot was powered off.
 
 :::
+
+#### Expansion Power _(EXP 1 and EXP 2)_  {#expansion-power}
+
+There are two Expansion Power connectors on the System Interface circuit board.
+The Expanison Power connectors can power small manipulators, DC-AC inverters, and DC-DC supplies.
+
+These connectors supply VBAT voltage, with a combined current of up to 20 A.
+The connectors also include soft-start circuitry which limits inrush current to 25 A.
+This soft-start circuit reduces the chance of a high capacitance load causing the 20 A fuse to pop.
+
+##### Replacing the Fuse
+
+Use a [Littelfuse 0297020.U](https://www.digikey.ca/en/products/detail/littelfuse-inc/0297020-U/3427482?s=N4IgTCBcDaIAxgJwHYFwHQFUQF0C%2BQA) as the replacement.
+
+##### Expansion Power Pin Mapping
+
+The pinout for each of the two connectors (EXP 1 and EXP 2) is illustrated below.
+
+| Expansion Power connector pin | Function                               |
+| :---------------------------- | :------------------------------------- |
+| 1                             | VBAT <em>(24 - 29 V, unregulated)</em> |
+| 2                             | GND                                    |
+
+##### Software Control of Expansion Power Rails
+
+The Expansion Power connectors are connected to the same control system as the User Power.
+Refer to the [Software Control of User Power Rails](#user_power_control) section for details.
 
 #### High Power Expansion Kit _(Large VBAT)_  {#high-power-expansion-kit}
 
