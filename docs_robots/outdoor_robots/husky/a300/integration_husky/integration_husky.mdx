@@ -8,6 +8,7 @@ toc_max_heading_level: 4
 import ComponentIntroductionHusky from "/components/introduction_husky_a300.mdx";
 import ComponentCommonSoftwareIntegration from "/components/common_software_integration.mdx";
 import ComponentTableHuskyOne from "/components/table_husky_1.mdx";
+import ComponentButtonStepDownload from "/components/button_step_download.tsx"
 import Support from "/components/support.mdx";
 
 <ComponentIntroductionHusky />
@@ -21,20 +22,45 @@ assessment and custom integrations may result in new hazards.
 
 :::
 
+<br />
+
 To attach custom hardware to Husky, you will have to take care of mechanical mounting, electrical
 supply, and software integration. This guide aims to equip you with respect to these challenges.
 
+---
+
 ## Mechanical Mounting
 
-Husky A300 is equipped with a [PACS&trade;](../../../../accessories/pacs) top plate for
-mounting additional sensors and equipment.
+<ComponentButtonStepDownload filePath={"/assets/step/034163-GEO_1.STEP"}/>
+
+
+This simplified 3D model of the Husky A300 includes details like the Top Plate mounting surface, internal Battery Integration Volume, 
+  and the System Interface circuit board where you can connect to the robot's electrical provisions.
+
+<center>
+  <figure>
+    <img
+      src="/img/robot_images/husky_a300_images/husky_a300_simplified_step_2.png"
+      width="400"
+    />
+    <img
+      src="/img/robot_images/husky_a300_images/husky_a300_simplified_step_3.png"
+      width="400"
+    />
+    <figcaption>
+      40 Ah battery configuration is shown.
+      Other configurations are available.
+    </figcaption>
+  </figure>
+</center>
+
 
 ### PACS&trade; Mounting and Kits
 
-[PACS&trade;](../../../../accessories/pacs) is a Clearpath Robotics standard, providing
- a grid of M5X0.8 holes onto the top plate of the robot. This grid of holes has a 80 mm X 80 mm spacing.
-You can create your own brackets to interface with these holes, or can use an existing Clearpath
-Robotics bracket.
+Husky A300 is equipped with a [PACS&trade;](../../../../accessories/pacs) Top Plate for mounting sensors and equipment.
+[PACS&trade;](../../../../accessories/pacs) is a Clearpath Robotics standard, providing a grid of M5×0.8 holes onto the Top Plate of the robot.
+This grid of holes has a 80 mm X 80 mm spacing.
+You can create your own brackets to interface with these holes, or can use an existing Clearpath Robotics bracket.
 
 :::note
 
@@ -90,80 +116,88 @@ Grommets are selected based on the size of the cable being passed through. A lis
 common grommets are listed in the table below. See also
 [full grommets product catalog](https://www.icotek.com/en/products/cable-grommets/kt-bk).
 
-| Part Number | Part Description | CPR Item Number | Retailer Link |
-| :---------- | :--------------- | :-------------- | :------------ |
-| Blank BK (41351)  | Blank grommet                        | 031393            | [RS-Online](https://ca.rs-online.com/product/icotek/41351/72428519/) |
-| KT 1 BK (39943)   | 1X Split grommet for 1-2 mm cable    | N/A               | [RS-Online](https://ca.rs-online.com/product/icotek/39943/72428434/) |
-| KT 2 BK (41302)   | 1X Split grommet for 2-3 mm cable    | 032027            | [RS-Online](https://ca.rs-online.com/product/icotek/41302/72428490/) |
-| KT 3 BK (41303)   | 1X Split grommet for 3-4 mm cable    | N/A               | [RS-Online](https://ca.rs-online.com/product/icotek/41303/72428491/) |
-| KT 4 BK (41304)   | 1X Split grommet for 4-5 mm cable    | 032536            | [RS-Online](https://ca.rs-online.com/product/icotek/41304/72428492/) |
-| KT 5 BK (41305)   | 1X Split grommet for 5-6 mm cable    | N/A               | [RS-Online](https://ca.rs-online.com/product/icotek/41305/72428493/) |
-| KT 6 BK (41306)   | 1X Split grommet for 6-7 mm cable    | 031394            | [RS-Online](https://ca.rs-online.com/product/icotek/41306/72428494/) |
-| KT 7 BK (41307)   | 1X Split grommet for 7-8 mm cable    | N/A               | [RS-Online](https://ca.rs-online.com/product/icotek/41307/72428495/) |
-| KT 8 BK (41308)   | 1X Split grommet for 8-9 mm cable    | N/A               | [RS-Online](https://ca.rs-online.com/product/icotek/41308/72428496/) |
-| KT 9 BK (41309)   | 1X Split grommet for 9-10 mm cable   | 031395            | [RS-Online](https://ca.rs-online.com/product/icotek/41309/72428497/) |
-| KT 10 BK (41310)  | 1X Split grommet for 10-11 mm cable  | 032535            | [RS-Online](https://ca.rs-online.com/product/icotek/41310/72428498/) |
-| KT 11 BK (41311)  | 1X Split grommet for 11-12 mm cable  | 031396            | [RS-Online](https://ca.rs-online.com/product/icotek/41311/72428499/) |
-| KT 2/6 BK (39905) | 2X Split grommet for 6-7 mm cable    | 028994            | [RS-Online](https://ca.rs-online.com/product/icotek/39905/72428402/) |
-| KT 2/7 BK (39916) | 2X Split grommet for 7-8 mm cable    | 031398            | [RS-Online](https://ca.rs-online.com/product/icotek/39916/72428413/) |
-| KT 2/8 BK (39918) | 2X Split grommet for 8-9 mm cable    | 032028            | [RS-Online](https://ca.rs-online.com/product/icotek/39918/72428415/) |
-| KT 4/5 BK (39910) | 4X Split grommet for 5-6 mm cable    | 031399            | [RS-Online](https://ca.rs-online.com/product/icotek/39910/72428407/) |
-| KT 4/6 BK (39933) | 4X Split grommet for 6-7 mm cable    | 031400            | [RS-Online](https://ca.rs-online.com/product/icotek/39933/72428424/) |
+| Part Number                    | Part Description                       | CPR Item Number   | Retailer Link                                                        |
+| :----------------------------- | :------------------------------------- | :---------------- | :------------------------------------------------------------------- |
+| Blank BK<br/><em>(41351)</em>  | Blank grommet                          | 031393            | [RS-Online](https://ca.rs-online.com/product/icotek/41351/72428519/) |
+| KT 1 BK<br/><em>(39943)</em>   | 1X Split grommet for 1 - 2 mm cable    | N/A               | [RS-Online](https://ca.rs-online.com/product/icotek/39943/72428434/) |
+| KT 2 BK<br/><em>(41302)</em>   | 1X Split grommet for 2 - 3 mm cable    | 032027            | [RS-Online](https://ca.rs-online.com/product/icotek/41302/72428490/) |
+| KT 3 BK<br/><em>(41303)</em>   | 1X Split grommet for 3 - 4 mm cable    | N/A               | [RS-Online](https://ca.rs-online.com/product/icotek/41303/72428491/) |
+| KT 4 BK<br/><em>(41304)</em>   | 1X Split grommet for 4 - 5 mm cable    | 032536            | [RS-Online](https://ca.rs-online.com/product/icotek/41304/72428492/) |
+| KT 5 BK<br/><em>(41305)</em>   | 1X Split grommet for 5 - 6 mm cable    | N/A               | [RS-Online](https://ca.rs-online.com/product/icotek/41305/72428493/) |
+| KT 6 BK<br/><em>(41306)</em>   | 1X Split grommet for 6 - 7 mm cable    | 031394            | [RS-Online](https://ca.rs-online.com/product/icotek/41306/72428494/) |
+| KT 7 BK<br/><em>(41307)</em>   | 1X Split grommet for 7 - 8 mm cable    | N/A               | [RS-Online](https://ca.rs-online.com/product/icotek/41307/72428495/) |
+| KT 8 BK<br/><em>(41308)</em>   | 1X Split grommet for 8 - 9 mm cable    | N/A               | [RS-Online](https://ca.rs-online.com/product/icotek/41308/72428496/) |
+| KT 9 BK<br/><em>(41309)</em>   | 1X Split grommet for 9 - 10 mm cable   | 031395            | [RS-Online](https://ca.rs-online.com/product/icotek/41309/72428497/) |
+| KT 10 BK<br/><em>(41310)</em>  | 1X Split grommet for 10 - 11 mm cable  | 032535            | [RS-Online](https://ca.rs-online.com/product/icotek/41310/72428498/) |
+| KT 11 BK<br/><em>(41311)</em>  | 1X Split grommet for 11 - 12 mm cable  | 031396            | [RS-Online](https://ca.rs-online.com/product/icotek/41311/72428499/) |
+| KT 2/6 BK<br/><em>(39905)</em> | 2X Split grommet for 6 - 7 mm cable    | 028994            | [RS-Online](https://ca.rs-online.com/product/icotek/39905/72428402/) |
+| KT 2/7 BK<br/><em>(39916)</em> | 2X Split grommet for 7 - 8 mm cable    | 031398            | [RS-Online](https://ca.rs-online.com/product/icotek/39916/72428413/) |
+| KT 2/8 BK<br/><em>(39918)</em> | 2X Split grommet for 8 - 9 mm cable    | 032028            | [RS-Online](https://ca.rs-online.com/product/icotek/39918/72428415/) |
+| KT 4/5 BK<br/><em>(39910)</em> | 4X Split grommet for 5 - 6 mm cable    | 031399            | [RS-Online](https://ca.rs-online.com/product/icotek/39910/72428407/) |
+| KT 4/6 BK<br/><em>(39933)</em> | 4X Split grommet for 6 - 7 mm cable    | 031400            | [RS-Online](https://ca.rs-online.com/product/icotek/39933/72428424/) |
 
 ---
 
 ## Electrical Integration
-
-Except for bus-powered USB cameras, most payloads have separate leads for power and data.
-Some payloads also make use of signalling through the AUX inputs and outputs on the Main
-circuit board or through the Digital I/O pins on the computer.
 
 Refer to [Cable Passthrough](#cable-passthrough) for details on how to pass cables through
 Husky's top plate for external payloads.
 
 ### Data Connections
 
-Data connections (USB and Ethernet) are made to the Husky computer mounted inside the chassis.
-These may be direct connections to the computer where ports are available or through USB hubs
-and network switches where expansion is required.
+| Data Bus                      | Clearpath's suggestion for connecting devices to the Husky's computer:                                                                |
+| :---------------------------- | :------------------------------------------------------------------------------------------------------------------------------------ |
+| USB                           | Direct connection to the robot's computer, or add a USB hub.                                                                          |
+| Ethernet                      | Connect to the robot's 2.5 Gbit/s Ethernet Switch, which is inside the chassis.                                                       |
+| Serial RS-232, RS-422, RS-485 | Add a USB converter, such as a FTDI cable. Most computers have Serial ports, but these take more time to configure than a FTDI cable. |
+| CAN                           | Add a USB converter, such as a PEAK System PCAN-USB.                                                                                  |
 
-### Main Circuit Board Connector Summary
+### System Interface Connector Summary {#system-interface-circuit-board-connector-summary}
 
-The Main circuit board provides a number of connections for power, fans, relays, GPIOs, auxiliary
-inputs and auxiliary outputs. These are summarized in the following table and described in more
-detail in the following sections.
+<center>
+  <figure>
+    <img
+      src="/img/robot_images/husky_a300_images/husky_a300_system_interface_board_1.png"
+      width="450"
+    />
+  </figure>
+</center>
 
-| MCU board label              | MCU board connector                 | Mating connector                                          | Crimp terminals                                              | Crimping tool    |
-| :--------------------------- | :---------------------------------- | :-------------------------------------------------------- | :----------------------------------------------------------- | :--------------- |
-| USER 1 - USER 8              | Molex 0039296088 | Molex 0039012080 | Molex 0039000140 (AWG 22-28) or Molex 0039000073 (AWG 18-24) | Molex 0638191000 |
-| EXP 1 - EXP 2                | Molex 1720650202 | Molex 1700010102 | Molex 1720630311 (AWG 14-16) or Molex 1720630312 (AWG 12) | Molex 2238631200 |
-| EXP CTRL                     | TE 3-794682-8    | TE 794617-8      | TE 1-794606-1 (AWG 20-24) or TE 1-794607-1 (AWG 26-30)    | TE 91391-1 |
-| AUX1 IN, AUX2 IN, AUX3 IN    | TE 3-794682-6    | TE 794617-6      | TE 1-794606-1 (AWG 20-24) or TE 1-794607-1 (AWG 26-30)    | TE 91391-1 |
-| AUX1 OUT, AUX2 OUT, AUX3 OUT | TE 3-794682-8    | TE 794617-8      | TE 1-794606-1 (AWG 20-24) or TE 1-794607-1 (AWG 26-30)    | TE 91391-1 |
-| GPIO                         | TE 4-794680-6    | TE 1-794617-6    | TE 1-794606-1 (AWG 20-24) or TE 1-794607-1 (AWG 26-30)    | TE 91391-1 |
-| FAN 5 - FAN 8                | Molex 0705430003 | Molex 0050579404 | Molex 0016020103 (AWG 22-24)                              | Molex 0638118700 |
-| W ES (Wireless E-Stop)       | TE 4-794682-0    | TE 1-794617-0    | TE 1-794606-1 (AWG 20-24) or TE 1-794607-1 (AWG 26-30)    | TE 91391-1 |
-| ES 3 - ES 8 (E-Stop)         | TE 3-794682-4    | TE 794617-4      | TE 1-794606-1 (AWG 20-24) or TE 1-794607-1 (AWG 26-30)    | TE 91391-1 |
-| SYS1 - SYS 2                 | Molex 1720650204 | Molex 1700010104 | Molex 1720630311 (AWG 14-16) or Molex 1720630312 (AWG 12) | Molex 2238631200 |
-| SYS3                         | Molex 1720650206 | Molex 1700010106 | Molex 1720630311 (AWG 14-16) or Molex 1720630312 (AWG 12) | Molex 2238631200 |
-| SYS4                         | Molex 0039281023 | Molex 0039012020 | Molex 0039000140 (AWG 22-28) or Molex 0039000073 (AWG 18-24) | Molex 0638191000 |
+The System Interface Assembly is a circuit board that includes power supplies, lighting controllers, motor controllers, and the Husky's microcontroller.
+This circuit board has connectors for: power, fans, relays, GPIOs, auxiliary inputs, auxiliary outputs, and Emergency Stop devices.
+
+| Purpose                                                      | Label on the circuit board   | Connector on the circuit board | Mating connector | Mating connector's crimp                                                               | Crimping tool    |
+| :----------------------------------------------------------- | :--------------------------- | :----------------------------- | :--------------- | :------------------------------------------------------------------------------------- | :--------------- |
+| <a href="#user-power-connections">User Power Connections</a> | USER 1 - USER 8              | Molex 0039296088               | Molex 0039012080 | Molex 0039000140 <em>(AWG 22-28)</em><br/>Or<br/>Molex 0039000073 <em>(AWG 18-24)</em> | Molex 0638191000 |
+| <a href="#expansion-power">Expansion Power</a>               | EXP 1 - EXP 2                | Molex 1720650202               | Molex 1700010102 | Molex 1720630311 <em>(AWG 14-16)</em><br />Or<br/>Molex 1720630312 <em>(AWG 12)</em>   | Molex 2238631200 |
+| <a href="#aux-inputs">AUX Inputs</a>                         | AUX1 IN, AUX2 IN, AUX3 IN    | TE 3-794682-6                  | TE 794617-6      | TE 1-794606-1 <em>(AWG 20-24)</em><br/>Or<br/>TE 1-794607-1 <em>(AWG 26-30)</em>       | TE 91391-1       |
+| <a href="#aux-outputs">AUX Outputs</a>                       | AUX1 OUT, AUX2 OUT, AUX3 OUT | TE 3-794682-8                  | TE 794617-8      | TE 1-794606-1 <em>(AWG 20-24)</em><br/>Or<br/>TE 1-794607-1 <em>(AWG 26-30)</em>       | TE 91391-1       |
+| <a href="#gpio">GPIO</a>                                     | GPIO                         | TE 4-794680-6                  | TE 1-794617-6    | TE 1-794606-1 <em>(AWG 20-24)</em><br/>Or<br/>TE 1-794607-1 <em>(AWG 26-30)</em>       | TE 91391-1       |
+| <a href="#fan-expansion">Fans</a>                            | FAN 5 - FAN 8                | Molex 0705430003               | Molex 0050579404 | Molex 0016020103 <em>(AWG 22-24)</em>                                                  | Molex 0638118700 |
+| <a href="#wireless-stop">Wireless Emergency Stop</a>         | W ES (Wireless E-Stop)       | TE 4-794682-0                  | TE 1-794617-0    | TE 1-794606-1 <em>(AWG 20-24)</em><br/>Or<br/>TE 1-794607-1 <em>(AWG 26-30)</em>       | TE 91391-1       |
+| <a href="#husky_external_stop">Emergency Stop Buttons</a>    | ES 3 - ES 8 (E-Stop)         | TE 3-794682-4                  | TE 794617-4      | TE 1-794606-1 <em>(AWG 20-24)</em><br/>Or<br/>TE 1-794607-1 <em>(AWG 26-30)</em>       | TE 91391-1       |
+| <a href="#computer-power">Computer Power</a>                 | SYS1 - SYS 2                 | Molex 1720650204               | Molex 1700010104 | Molex 1720630311 <em>(AWG 14-16)</em><br/>Or<br/>Molex 1720630312 <em>(AWG 12)</em>    | Molex 2238631200 |
+| <a href="#graphics-card-power">Graphics Card Power</a>       | SYS3                         | Molex 1720650206               | Molex 1700010106 | Molex 1720630311 <em>(AWG 14-16)</em><br/>Or<br/>Molex 1720630312 <em>(AWG 12)</em>    | Molex 2238631200 |
+| <a href="#network-switch-power">Network Switch Power</a>     | SYS4                         | Molex 0039281023               | Molex 0039012020 | Molex 0039000140 <em>(AWG 22-28)</em><br/>Or<br/>Molex 0039000073 <em>(AWG 18-24)</em> | Molex 0638191000 |
 
 ### Power Connections
 
 #### User Power Connections  {#user-power-connections}
 
-The Main circuit board provides eight connectors, labelled USER 1 through USER 8, for user power. 
+The System Interface circuit board provides eight User Power connectors, labelled USER 1 through USER 8. 
 
 User power is divided into four power rails and the power for each rail is shared
 across each of the 8 connectors. The maximum (aggregate) current available on each power rail is
 outlined in the table below.
+These circuits are protected with self resetting fuses.
+These circuits can also be toggled on and off through ROS.
 
-| User Power Rail             | Maximum (Aggregate) Current |
-| :-------------------------- | :-------------------------- |
-| 12 V Rail A                 | 5 A                         |
-| 12 V Rail B                 | 5 A                         |
-| 24 V                        | 5 A                         |
-| VBAT (24-29 V, unregulated) | 5 A                         |
+| User Power Rail                        | Maximum (Aggregate) Current |
+| :------------------------------------- | :-------------------------- |
+| 12 V Rail A                            | 5 A                         |
+| 12 V Rail B                            | 5 A                         |
+| 24 V                                   | 5 A                         |
+| VBAT <em>(24 - 29 V, unregulated)</em> | 5 A                         |
 
 :::safety-warning
 
@@ -177,16 +211,16 @@ Failure to do so may result in damage to your payload.
 
 The pinout for each of the eight connectors (USER 1 - USER 8) is illustrated below.
 
-| USER connector pin | Function |
-| :----------------- | :------- |
-| 1                  | 12 V (Rail B) |
-| 2                  | 12 V (Rail A) |
-| 3                  | 24 V |
-| 4                  | VBAT (24-29 V, unregulated) |
-| 5                  | GND |
-| 6                  | GND |
-| 7                  | GND |
-| 8                  | GND |
+| USER connector pin | Function                               |
+| :----------------- | :------------------------------------- |
+| 1                  | 12 V <em>(Rail B)</em>                 |
+| 2                  | 12 V <em>(Rail A)</em>                 |
+| 3                  | 24 V                                   |
+| 4                  | VBAT <em>(24 - 29 V, unregulated)</em> |
+| 5                  | GND                                    |
+| 6                  | GND                                    |
+| 7                  | GND                                    |
+| 8                  | GND                                    |
 
 ##### Making Cables to Connect to User Power
 
@@ -248,39 +282,34 @@ regardless of its state when the robot was powered off.
 
 :::
 
-<!--
-#### User Power Expansion Kit
+#### Expansion Power _(EXP 1 and EXP 2)_  {#expansion-power}
 
-In addition to the [User Power Connections](#user-power-connections), an optional
-expansion kit can be used to provide additional user power:
+There are two Expansion Power connectors on the System Interface circuit board.
+The Expanison Power connectors can power small manipulators, DC-AC inverters, and DC-DC supplies.
 
-- 12 V: 10 A
-- 24 V: 10 A
+These connectors supply VBAT voltage, with a combined current of up to 20 A.
+The connectors also include soft-start circuitry which limits inrush current to 25 A.
+This soft-start circuit reduces the chance of a high capacitance load causing the 20 A fuse to pop.
 
-The User Power Expansion Kit can purchased at the time of your original Husky order
-or as a later purchase by contacting [Support](#support).
+##### Replacing the Fuse
 
-The kit includes a PCBA with connectors similar to USER 1 - USER 8 along with cables
-that connect the PCBA to the EXP 1, EXP 2, and EXP CTRL connectors on the Main Circuit
-Board. The length of the expansion cables can be adjusted to that the additional user
-power is available in a different location in the system, such as in a custom
-enclosure.
+Use a [Littelfuse 0297020.U](https://www.digikey.ca/en/products/detail/littelfuse-inc/0297020-U/3427482?s=N4IgTCBcDaIAxgJwHYFwHQFUQF0C%2BQA) as the replacement.
 
-:::note
+##### Expansion Power Pin Mapping
 
-This kit is still under development. Updates pending for:
+The pinout for each of the two connectors (EXP 1 and EXP 2) is illustrated below.
 
-- CPR Item Number
-- Software enable/disable control
-- Installation instructions
-   - Cable connections on Main Circuit Board
-   - Cable routing outside chassis
-   - Mechanical mounting
+| Expansion Power connector pin | Function                               |
+| :---------------------------- | :------------------------------------- |
+| 1                             | VBAT <em>(24 - 29 V, unregulated)</em> |
+| 2                             | GND                                    |
 
-:::
--->
+##### Software Control of Expansion Power Rails
 
-#### High Power Expansion Kit  {#high-power-expansion-kit}
+The Expansion Power connectors are connected to the same control system as the User Power.
+Refer to the [Software Control of User Power Rails](#user_power_control) section for details.
+
+#### High Power Expansion Kit _(Large VBAT)_  {#high-power-expansion-kit}
 
 :::note
 
@@ -292,8 +321,8 @@ order, referring to CPR Item 032001. Field installation is not supported at pres
 :::note
 
 When using the optional High Power Expansion Kit while operating in environments with
-inclines of 5° (or more) AND with a payload of 50 kg (or more), a 4-battery or
-6-battery configuration is recommended. Using a 2-battery configuration may provide
+inclines of 5° (or more) AND with a payload of 50 kg (or more), an 80 Ah battery or
+ 120 Ah battery configuration is recommended. Using a 40 Ah battery configuration may provide
 insufficient power in the worst case. Contact [Support](#support) for additional details.
 
 :::
@@ -308,7 +337,7 @@ To use the High Power Expansion Kit, if present, the user can begin by creating 
 cable. #10 AWG is recommended for cable routing within the chassis, such as to a manipulator
 control board. #8 AWG is recommended for cable routing outside the chassis, noting that
 #8 AWG is acceptable in an exposed cable for 40 A, per UL 1740. The mating cable will
-connect to the yellow SB50 connector in left-rear of the chassis, under the top plate.
+connect to the yellow Anderson Power Products SB50 connector in left-rear of the chassis, under the top plate.
 
 :::note
 
@@ -323,17 +352,16 @@ on proper crimping.
 
 :::
 
-| Description  | Vendor Part | CPR Part Number |
-| :----------- | :----------------- | :-------------- |
-| Mating connector | [Anderson 992G5-BK](https://www.digikey.ca/en/products/detail/anderson-power-products-inc/992G5-BK/10650433) | 022554 |
-| Crimps, #8 AWG | [Anderson 5952-BK](https://www.digikey.ca/en/products/detail/anderson-power-products-inc/5952-BK/10650106) | 017281 |
-| Crimps, #10-12 AWG | [Anderson 5953-BK](https://www.digikey.ca/en/products/detail/anderson-power-products-inc/5953-bk/10650410) | 022562 |
-| Crimping tool | [Anderson 1309G4](https://www.digikey.ca/en/products/detail/anderson-power-products,-inc./1309G4/10650073) | N/A |
+| Description           | Vendor Part                                                                                                  | CPR Part Number |
+| :-------------------- | :----------------------------------------------------------------------------------------------------------- | :-------------- |
+| Mating connector      | [Anderson 992G5-BK](https://www.digikey.ca/en/products/detail/anderson-power-products-inc/992G5-BK/10650433) | 022554          |
+| Crimps, #8 AWG        | [Anderson 5952-BK](https://www.digikey.ca/en/products/detail/anderson-power-products-inc/5952-BK/10650106)   | 017281          |
+| Crimps, #10 - #12 AWG | [Anderson 5953-BK](https://www.digikey.ca/en/products/detail/anderson-power-products-inc/5953-bk/10650410)   | 022562          |
+| Crimping tool         | [Anderson 1309G4](https://www.digikey.ca/en/products/detail/anderson-power-products,-inc./1309G4/10650073)   | N/A             |
 
 ##### Replacing the Fuse
 
-If you need to replace the fuse, use a [Littlefuse F6792-ND](https://www.digikey.ca/en/products/detail/littelfuse-inc/142-5631-5402/2515916)
-as the replacement.
+Use a [Littelfuse 142.5631.5402](https://www.digikey.ca/en/products/detail/littelfuse-inc/142-5631-5402/2515916) as the replacement.
 
 ##### On/Off Control via Software
 
@@ -347,7 +375,7 @@ The user must enable the output, via the ROS topic above, each time after the sy
 
 :::
 
-### AUX Inputs
+### AUX Inputs {#aux-inputs}
 
 The Main circuit board provides 3 auxilliary inputs (AUX1 IN, AUX2 IN, AUX3 IN) that
 allow external payloads to provide inputs to the robot. Each of the three auxilliary
@@ -413,7 +441,7 @@ connected to pin 3.
 | Turn the 12 V supply on               | 4 (8b00000100) | '1' since button is not pressed | '0' since 12 V supply is on | '0' 24 V supply is on |
 | Press and hold the button             | 0 (8b00000000) | '0' since button is pressed | '0' since 12 V supply is on | '0' 24 V supply is on |
 
-### AUX Outputs
+### AUX Outputs {#aux-outputs}
 
 The Main circuit board includes three user-controlled outputs (AUX1 OUT, AUX2 OUT, AUX3 OUT)
 that can be controlled by publishing to the `/a300_#####/platform/mcu/cmd_aux_outputs` ROS topic.
@@ -426,7 +454,7 @@ The AUX outputs are mapped to the ROS message bits as follows:
 - AUX2 OUT: bit 1
 - AUX3 OUT: bit 2
 
-#### Aux Output Examples
+#### AUX Output Examples
 
 To disable all AUX outputs:
 
@@ -446,7 +474,7 @@ To enable just the AUX3 output:
 rostopic pub /a300_#####/platform/mcu/cmd_aux_outputs std_msgs/UInt8 "data: 4"
 ```
 
-#### Aux Output Pin Mapping
+#### AUX Output Pin Mapping
 
 Each of the AUX outputs is an 8-pin connector with pin mapping as outlined below. The output
 value is available in several modes:
@@ -466,7 +494,7 @@ value is available in several modes:
 | 7 (AUX_RELAY_NO)      | Normally open relay pin | Floating | Connected to AUX_RELAY_COMMON |
 | 8 (AUX_MOSFET1)       | MOSFET #1 DRAIN | GND | Floating |
 
-### General Purpose Inputs and Outputs (GPIO)
+### General Purpose Inputs and Outputs (GPIO) {#gpio}
 
 The Main circuit board includes four general purpose inputs and four general purpose
 outputs, which are all connected to the 16-pin GPIO connector. All GPIOs are at the
@@ -500,7 +528,7 @@ Publishing to the ROS `/a300_#####/platform/mcu/cmd_gp_outputs` topic controls t
 | 11 | GND | N/A | GND | GND |
 | 12 | GND | N/A | GND | GND |
 
-### Fan Expansion
+### Fan Expansion {#fan-expansion}
 
 The Main circuit board has support for four additional 12 V brushless 4-wire PWM fans,
 one fan at each of FAN 5, FAN 6, FAN 7, and FAN 8. (FAN 1, FAN 2, FAN 3, and FAN 4 are
@@ -573,9 +601,9 @@ and [Cable Passthrough](#cable-passthrough) for additional details.
 
 ### External Emergency Stop {#husky_external_stop}
 
-In addition to the two built-in Emergency Stop Button and in addition to the
+In addition to the two built-in Emergency Stop Buttons, and in addition to the
 optional Wireless Emergency Stop, six additional emergency stop inputs are available
-on the Main circuit board (ES3 - ES8). By default, each of these are wired with a bypass
+on the System Interface circuit board (ES3 - ES8). By default, each of these are wired with a bypass
 connector. However, it is possible to remove a bypass connector and replace it with
 a connection to a device such as:
 
@@ -594,12 +622,11 @@ The pinout for ES3 - ES8 is shown below.
 | 4  | Channel 2 In |
 
 
-### Computer Power
+### System Power 
 
-Three connectors are provided for powering computers, including GPUs: SYS1, SYS2, and SYS3. Collectively,
-they provide up to 400 W of power at 12 V.
+These 4 connectors collectively provide up to 400 W of power at 12 V for powering computers and network equipment.
 
-#### SYS1 / SYS2 Pinouts
+#### SYS1 / SYS2 Pinouts For Computers {#computer-power}
 
 | Pin | Function / Value |
 | :-- | :--------------- |
@@ -608,7 +635,7 @@ they provide up to 400 W of power at 12 V.
 | 3   | GND              |
 | 4   | GND              |
 
-#### SYS3 Pinouts
+#### SYS3 Pinout For A Graphics Card {#graphics-card-power}
 
 | Pin | Function / Value |
 | :-- | :--------------- |
@@ -619,12 +646,9 @@ they provide up to 400 W of power at 12 V.
 | 5   | GND              |
 | 6   | GND              |
 
-### Other System Power
+#### SYS4 System Power For A Network Switch {#network-switch-power}
 
-SYS4 is used to power the internal network switch and
-provides up to 60 W of power at 12 V.
-
-#### SYS4 Pinouts
+This provides 60 W of power at 12 V.
 
 | Pin | Function / Value |
 | :-- | :--------------- |
