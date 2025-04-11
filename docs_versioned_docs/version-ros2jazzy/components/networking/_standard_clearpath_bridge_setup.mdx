@@ -9,13 +9,51 @@ the IP address `192.168.131.1`. See [Standard IP Addresses](../../ros/networking
 
 :::
 
-To configure the default bridge:
-1. Run `sudo clearpath-computer-setup`
-2. Navigate to **Netplan Setup** -> **Pre-set Configurations**.
-3. Select **Standard Clearpath Bridge** and generate the configuration by following the instructions.
-4. Return to the **Netplan Setup** menu and select **Apply Configuration Changes**.
+To configure the default bridge, create or edit `/etc/netplan/50-clearpath-standard.yaml` to
+contain the following:
 
-This will create a `/etc/netplan/50-clearpath-standard.yaml` file and apply the changes to `netplan`.
+```yaml
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    bridge_enp:
+      match:
+        name: "enp*"
+      dhcp4: false
+      dhcp6: false
+    bridge_enx:
+      match:
+        name: "enx*"
+      dhcp4: false
+      dhcp6: false
+    bridge_eth:
+      match:
+        name: "eth*"
+      dhcp4: false
+      dhcp6: false
+  bridges:
+    br0:
+      addresses:
+      - "192.168.131.1/24"
+      dhcp4: true
+      dhcp6: false
+      interfaces:
+      - bridge_eth
+      - bridge_enx
+      - bridge_enp
+```
 
-Once the network settings have been applied, call `ip a` to check that the network bridge has been created, and
-that the computer has been assigned the `192.168.131.1` IP address.
+This will bridge all physical ethernet ports together into the `br0` bridge, which is assigned
+the static address `192.168.131.1`. The bridge can also be used to connect to a wired DHCP
+server to provide internet access to the robot.
+
+After editing the file, run the following commands to apply the changes:
+
+1. `sudo netplan --debug generate` -- this will verify your netplan configuration files and
+   notify you if there are errors. Correct any errors before proceeding.
+2. `sudo netplan try` -- this will try running the new configuration, but will automatically
+   roll back if it doesn't work correctly.
+3. `sudo netplan apply` -- this will apply the new configuration. Note that if you are logged in
+   over SSH from a remote computer you may lose your SSH connection if the active interface was
+   modified.
