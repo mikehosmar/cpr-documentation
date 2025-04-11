@@ -60,10 +60,21 @@ of ROS 2 topics and services defined by Clearpath which are used by all supporte
  - Move extras launch into a new service
  - Added remapping for upstream mecanum controller
  - Updated mecanum controller types
- - Add exception handling to the generators to print a nicer error message in the case of self-generated Unsupported* exceptions 
+ - Add exception handling to the generators to print a nicer error message in the case of self-generated Unsupported* exceptions
+ - Added Graceful shutdown for A300 FW
+ - Increased TCPIP and NETBUF Mbox sizes to allow for larger bursts of UDP packets
+ - UDP CAN bridge improvements
+ - Ethernet Bootloader for A300
+ - Added Dingo, Ridgeback and Jackal Jazzy firmware
+ - Increase status text size for A300 FW
+ - Create Error Screen Drawing Function for A300 FW
+ - Made fan commands a hidden topic for A300 FW
+ - Switch aux output pins to default to high on boot for A300 FW
 
 #### Fixed
  - Updated the A300's default IMU location
+ - Handle empty namespace
+ - Stop clearpath platform service before flashing over ethernet
 
 
 ### [2.0] 2025-02-28
