@@ -16,15 +16,16 @@ It is highly recommended to install the simulator on a computer with a dedicated
 
 Follow the [Offboard Computer](../../installation/offboard_pc.mdx) setup guide.
 
-### Installing Gazebo Fortress
+### Installing Gazebo Harmonic
 
 Run the following commands in your terminal:
 
 ```
-sudo apt-get update && sudo apt-get install wget
-sudo sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list'
-wget http://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -
-sudo apt-get update && sudo apt-get install ignition-fortress
+sudo apt-get install curl lsb-release gnupg
+sudo curl https://packages.osrfoundation.org/gazebo.gpg --output /usr/share/keyrings/pkgs-osrf-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-osrf-archive-keyring.gpg] http://packages.osrfoundation.org/gazebo/ubuntu-stable $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/gazebo-stable.list > /dev/null
+sudo apt-get update
+sudo apt-get install gz-harmonic
 ```
 
 ### Installing Clearpath Simulator
