@@ -115,6 +115,11 @@ platform:
 # Physical USB CAN Adapters
 Just as the serial CAN adapters, USB physical CAN adapters are trivial to setup, but are generally harder to obtain. Out of the three options, these adapters are the easiest to setup as they only need the `ip link` command to bring up.
 
+Fields required for a physical CAN adapter:
+- **type**: Must be set to *physical*
+- **can_dev**: The name of the physical interface.
+- **baud**: The baud rate of the CAN interface. See above for list.
+
 To define a physical USB CAN adapter in the robot configuration YAML, use the type `physical` that the physical CAN is registered as and the baud rate.
 
 ```yaml
