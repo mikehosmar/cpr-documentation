@@ -76,3 +76,9 @@ safety-icon {
   font-weight: bold;
   color: var(--toc-active-link-color);
 }
+
+.image-padding {
+  padding-right: 30px;
+  padding-bottom: 30px;
+}
+
