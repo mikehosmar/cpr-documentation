@@ -66,6 +66,35 @@ import ComponentSafetySystemFunctionality from "/components/husky_a300_safety_sy
   <TOCInline toc={toc} />
 </details>
 
+## Quick Start Checklist  {#quick-start}
+
+1. Review the [important safety notes](#a300-safety).
+1. [Remove Husky AMP from its shipping crate](#unboxing-a300).
+1. [Turn on the circuit breaker](#turning-the-circuit-breaker-on) and
+   [turn the robot on](#turning-the-robot-on).
+1. [Clear any stop conditions](#clearing-an-emergency-stop) and [press the Safety Restart Button](#clear-needs-reset).
+1. Check the status lights and confirm that the robot is in the idle state. (TODO: link to User Manual)
+1. [Connect the joystick and drive the robot](#controller).
+1. Connect your laptop to the robot's wifi network. (TODO: create new section + add link)
+   SSID: cpr_a300_XXXXX_radio; password: clearpath
+   Alternatively, [set up a wired Ethernet connection](../../outdoor_robots/husky/a300/user_manual_husky.mdx#ethernet-connection)
+   to the Husky A300 debug port.
+1. [Confirm that all sensors are operational](#checking-sensors).
+1. Confirm that OutdoorNav software is launching correctly (TODO: add links to the OutdoorNav User Manual for each of the items below)
+   1. Connect to Web UI
+   1. Check camera feeds (links to OutdoorNav Web UI Overview)
+   1. Check GPS RTK Fix (Observer only?) (links to OutdoorNav ???)
+   1. Check that there are no errors on the status page? (links to OutdoorNav ???)
+   1. Complete system configuration (links to OutdoorNav Getting Started)
+      1. Loading Map Tiles
+      1. Set Dock Location (Dock only)
+   1. Create your first map (links to OutdoorNav Web UI Map Mode)
+   1. Create your first mission (links to OutdoorNav Web UI Map Mode)
+   1. Execute your first mission (links to OutdoorNav Web UI Map Mode)
+1. When the battery gets low, as seen on the rear display or based on the status lights,
+   [connect the charger](#charging-the-robot). If your robot is equipped with an optional
+   wireless charger, you may dock the robot at the wireless charger instead (TODO: link).
+
 ## Introduction
 
 ### About
@@ -112,6 +141,31 @@ This additional work will come preinstalled on your robot.
   <ComponentClearingEmergencyStop />
   <ComponentWirelessEmergencyStop />
   <ComponentConnectingWirelessJoystick />
+
+### Checking Sensors  {#checking-sensors}
+
+After establishing a wifi or wired connection to the robot, use SSH to connect to robot's
+computer and `ping` the various sensors to confirm that they are operational.
+
+For example, to confirm that the front teleop camera is working:
+
+```
+$ ping 19.168.131.15
+...TODO: response
+```
+
+The full sensor list is outlined below.
+
+| Sensor | IP Address |
+| :----- | :--------- |
+| Front teleop camera | 192.168.131.15 |
+| Rear teleop camera | 192.168.131.16 |
+| GPS/Vision | 192.168.131.35 |
+| Front 3D lidar | 192.168.131.25 |
+| Side 2D docking lidar (optional) | 192.168.131.20 |
+| Top 3D lidar (optional) | 192.168.131.TODO |
+| Pan-tilt-zoom camera (optional) | 192.168.131.TODO |
+
   <ComponentIssuesAfterGettingStarted />
 
 ## Operating The Robot {#operating-the-robot}
