@@ -61,3 +61,22 @@ to navigate through autonomously.
 ros2 run nav2_map_server map_saver_cli -f "map_name"
 --ros-args -p map_subscribe_transient_local:=true -r __ns:=/a300_0000
 ```
+
+**6.** Give the robot a navigation goal
+
+Use the **Nav2 Goal** tool in RViz to set a navigation goal pose. Click on the "Nav2 Goal"
+button on the toolbar to select the tool, then click and drag on the map in Rviz to set the
+destination location and orientation.
+
+You will see a red path line appear, indicating the robot's planned path, and the robot will
+start to drive along this path.
+
+<center>
+  <figure>
+    <img
+      src={require("./img/nav_goal.gif").default}
+      width="900"
+    />
+    <figcaption>Navigation in simulation</figcaption>
+  </figure>
+</center>
