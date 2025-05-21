@@ -1,0 +1,28 @@
+h2::before {
+  content: none;
+  counter-increment: none;
+  counter-set: none;
+}
+
+h3::before {
+  content: none;
+  counter-increment: none;
+  counter-set: none;
+}
+
+h4::before {
+  content: none;
+  counter-increment: none;
+  counter-set: none;
+}
+
+h5::before {
+  content: none;
+  counter-increment: none;
+  counter-set: none;
+}
+
+h6::before {
+  content: none;
+  counter-increment: none;
+}

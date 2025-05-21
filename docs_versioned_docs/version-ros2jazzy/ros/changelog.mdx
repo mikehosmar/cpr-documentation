@@ -3,10 +3,11 @@ title: Robot Clearpath Platform Software Changelog
 sidebar_label: Changelog
 sidebar_position: 8
 ---
+import '../components/changelog.css'
 
-### [2.4] 2025-04-30
+ ## [2.4] 2025-04-30
 
-#### New Features
+ ### New Features
  - Added pinout messages
  - Moved clearpath_tests into clearpath_robot
  - Added a software based low voltage cut-off for the A300
@@ -23,7 +24,7 @@ sidebar_position: 8
  - Added Error Reporting API for A300
 
 
-#### Fixed
+ ### Fixed
  - Fixed the Husky A300 serial sample to match the real serial
  - Updated Ridgeback R100 raiser height to 0.07m from 0.055m
  - Removed duplicate and incorrect current / voltage labels
@@ -31,9 +32,9 @@ sidebar_position: 8
  - Fixed event flag wait timeout in power task shutdown handling for A300
 
 
-### [2.3] 2025-04-11
+ ## [2.3] 2025-04-11
 
-#### New Features
+ ### New Features
  - Added temperature indices for all platforms
  - Remove temperature fields from status message
  - Added display status message for A300 display
@@ -73,7 +74,7 @@ sidebar_position: 8
  - Added diagnostic categories
  - Add UR socat tool communication script
 
-#### Fixed
+ ### Fixed
  - Updated the A300's default IMU location
  - Handle empty namespace
  - Stop clearpath platform service before flashing over ethernet
@@ -84,11 +85,11 @@ sidebar_position: 8
  - Increased power and timer task stack sizes to fix crashing on A300 MCU
 
 
-### [2.0] 2025-02-28
+ ## [2.0] 2025-02-28
 
-#### New Features
+ ### New Features
  - First Jazzy release
 
-#### Fixed
+ ### Fixed
  - First Jazzy release
 
