@@ -45,9 +45,46 @@ on an external server, this step must be should on your workstation, not on the 
 ros2 launch clearpath_viz view_navigation.launch.py namespace:=a300_0000
 ```
 
-**6.** Set the initial pose of the robot
+**6.** Set the initial pose of the robot using the [**2D Pose Estimate**](#2d-pose-estimate) tool in RViz.
 
-Use the **2D Pose Estimate** tool in RViz to set the initial pose of the robot.
+**7.** Give the robot a navigation goal using the [**Nav2 Goal**](#nav2-goal) tool in RViz.
+
+## Nav2 Tools in Rviz
+
+The Rviz configuration used by the `clearpath_viz view_navigation.launch.py` file includes several
+tools for interacting with Nav2. These tools require Rviz's **Fixed Frame** to be set to `map`. To
+set the fixed frame, use the toolbar on the left and open Displays > Global Options > Fixed Frame.
+
+Initially the `map` frame may not be connected to the rest of the **TF Tree**. This is normal, and
+will be fixed when we use the **2D Pose Estimate** tool. If `map` does not appear in the frame drop-down
+simply type the word `map` into the box and press `ENTER`.
+
+To select a Nav2 tool, simply click on the button on the toolbar at the top of Rviz's main window
+
+<center>
+  <figure>
+    <img
+      src={require("./img/rviz_nav2_tools.png").default}
+      width="600"
+    />
+    <figcaption>Rviz's toolbar with Nav2 tools</figcaption>
+  </figure>
+</center>
+
+### 2D Pose Estimate
+
+The **2D Pose Estimate** tool allows you to provide Nav2 with the robot's approximate initial position on
+the map. This is a necessary step before you can navigate with the robot. This step connects the `map`
+frame to the rest of the robot's TF tree.
+
+To set the robot's initial position, click and hold the mouse button on the map in the robot's approximate location.
+While holding the left mouse button, drag the green arrow to set the robot's orientation. Releasing the left
+mouse button will set the robot's position and orientation relative to the `map` frame.
+
+If you are using SLAM and there is no map yet, simply click on the centre of the screen and drag up.
+
+Once you have set the robot's initial pose you should see red markers representing the lidar data as well
+as coloured gradients indicating collision zones around walls and obstacles.
 
 <center>
   <figure>
@@ -59,19 +96,43 @@ Use the **2D Pose Estimate** tool in RViz to set the initial pose of the robot.
   </figure>
 </center>
 
-Click on the button at the top of the Rviz window labelled **2D Pose Estimate** to select the tool.
-Then click on the robot's approximate location on the map and drag to set the direction the robot
-is facing. Releasing the mouse will set the robot's pose estimate.  You will see the robot's
-model appear on the map along with red markers indicating the lidar data.
+### Publish Point
 
-**7.** Give the robot a navigation goal
+The **Publish Point** tool allows you to click on the map and publish the XYZ coordinates of that
+point to the `clicked_point` topic. In a terminal run the command
+```bash
+ros2 topic echo /a300_0000/clicked_point
+```
+Then select the Publish Point tool and click somewhere on the map. In the terminal you will see
+the location you clicked as a `geometry_msgs/msg/PointStamped` message:
+```yaml
+header:
+  stamp:
+    sec: 1747855824
+    nanosec: 867726206
+  frame_id: map
+point:
+  x: -0.12474524974822998
+  y: 0.002330044750124216
+  z: -0.001434326171875
+```
 
-Use the **Nav2 Goal** tool in RViz to set a navigation goal pose. Click on the "Nav2 Goal"
-button on the toolbar to select the tool, then click and drag on the map in Rviz to set the
-destination location and orientation.
+<center>
+  <figure>
+    <img
+      src={require("./img/clicked_point.gif").default}
+      width="900"
+    />
+    <figcaption>Publishing a point</figcaption>
+  </figure>
+</center>
 
-You will see a red path line appear, indicating the robot's planned path, and the robot will
-start to drive along this path.
+### Nav2 Goal
+
+The **Nav2 Goal** tool allows you to set a goal pose for the robot. The Nav2 stack will then plan a path to the goal pose
+and attempt to drive the robot there.
+
+You will see a red path line appear, indicating the robot's planned path, and the robot will start to drive along this path.
 
 <center>
   <figure>
