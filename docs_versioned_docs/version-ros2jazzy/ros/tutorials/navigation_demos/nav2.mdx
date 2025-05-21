@@ -64,14 +64,19 @@ Then click on the robot's approximate location on the map and drag to set the di
 is facing. Releasing the mouse will set the robot's pose estimate.  You will see the robot's
 model appear on the map along with red markers indicating the lidar data.
 
-**7. Give the robot a navigation goal**
+**7.** Give the robot a navigation goal
 
-Use the **Nav2 Goal** tool in RViz to set a navigation goal pose.
+Use the **Nav2 Goal** tool in RViz to set a navigation goal pose. Click on the "2D Nav Goal"
+button on the toolbar to select the tool, then click and drag on the map in Rviz to set the
+destination location and orientation.
+
+You will see a red path line appear, indicating the robot's planned path, and the robot will
+start to drive along this path.
 
 <center>
   <figure>
     <img
-      src={require("./img/nav2.gif").default}
+      src={require("./img/nav_goal.gif").default}
       width="900"
     />
     <figcaption>Navigation in simulation</figcaption>
