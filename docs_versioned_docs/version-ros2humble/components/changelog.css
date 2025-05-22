@@ -1,28 +1,28 @@
-h2::before {
+.changelog h2::before {
   content: none;
   counter-increment: none;
   counter-set: none;
 }
 
-h3::before {
+.changelog h3::before {
   content: none;
   counter-increment: none;
   counter-set: none;
 }
 
-h4::before {
+.changelog h4::before {
   content: none;
   counter-increment: none;
   counter-set: none;
 }
 
-h5::before {
+.changelog h5::before {
   content: none;
   counter-increment: none;
   counter-set: none;
 }
 
-h6::before {
+.changelog h6::before {
   content: none;
   counter-increment: none;
 }
