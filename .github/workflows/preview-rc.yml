@@ -37,6 +37,8 @@ jobs:
   cleanup-on-delete:
     if: github.event_name == 'delete'
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
     steps:
       - name: Get ref for pull_request
         run: |
