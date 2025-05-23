@@ -25,7 +25,7 @@ jobs:
       - name: Enable Amplify Preview
         uses: mikehosmar/amplify-preview-actions@sed-replace-all
         with:
-          branch_name: ${{ github.head_ref }}
+          branch_name: ${{ github.event.ref }}
           amplify_command: deploy
         env:
           AWS_ACCESS_KEY_ID: ${{ steps.creds.outputs.aws-access-key-id }}
