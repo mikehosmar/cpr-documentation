@@ -39,7 +39,7 @@ jobs:
           AWS_REGION: 'us-east-2'
 
   cleanup-on-delete:
-    if: github.event_name == 'delete' || (github.event_name == 'pull_request_target' && startsWith(github.ref, 'refs/heads/rc/')
+    if: github.event_name == 'delete' || (github.event_name == 'pull_request_target' && startsWith(github.ref, 'refs/heads/rc/'))
     runs-on: ubuntu-latest
     continue-on-error: true
     steps:
