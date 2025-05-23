@@ -41,6 +41,7 @@ jobs:
   cleanup-on-delete:
     if: github.event_name == 'delete' || (github.event_name == 'pull_request_target' && startsWith(github.ref, 'refs/heads/rc/')
     runs-on: ubuntu-latest
+    continue-on-error: true
     steps:
       - name: Get ref for pull_request
         run: |
