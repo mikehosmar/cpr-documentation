@@ -19,7 +19,7 @@ jobs:
           role-to-assume: ${{ secrets.AWS_GITHUB_ACTIONS_ROLE }}
           output-credentials: true
       - name: Enable Amplify Preview
-        uses: mikehosmar/amplify-preview-actions@sed-replace-all
+        uses: clearpathrobotics/amplify-preview-actions@sed-replace-all
         with:
           branch_name: ${{ github.event.ref }}
           amplify_command: deploy
@@ -52,7 +52,7 @@ jobs:
           role-to-assume: ${{ secrets.AWS_GITHUB_ACTIONS_ROLE }}
           output-credentials: true
       - name: cleanup PR preview branch
-        uses: mikehosmar/amplify-preview-actions@sed-replace-all
+        uses: clearpathrobotics/amplify-preview-actions@sed-replace-all
         with:
           branch_name: ${{ env.BRANCH_NAME }}
           amplify_command: delete
