@@ -10,7 +10,11 @@ import ComponentUpdatingPumaFirmware from "/components/maintenance/firmware_upda
 import ComponentLeadAcidBatteryCare from "/components/maintenance/lead_acid_battery_care.mdx";
 import ComponentLeadAcidBatteryCareTips from "/components/maintenance/lead_acid_battery_care_tips.mdx";
 import ComponentBillOfMaterialsNote from "/components/maintenance/bill_of_materials_note.mdx";
+import ComponentCommonReplacementItems from "/components/husky_a300/husky_a300_common_replacement_items.mdx";
 import GettingNewPackages from "/components/maintenance/getting_new_packages.mdx";
+import ComponentMotors from "/components/husky_a300/husky_a300_motors.mdx";
+import ComponentTireAndTube from "/components/husky_a300/husky_a300_tire.mdx";
+import ComponentReplacingCircuitBoards from "/components/husky_a300/husky_a300_replacing_circuit_boards.mdx";
 import Support from "/components/support.mdx";
 
 <ComponentIntroductionHusky />
@@ -106,25 +110,18 @@ Procedure:
 1. Install the clean filter.
 1. Replace the front livery panel by aligning the pins and tighten the quarter-turn latches.
 
-#### Battery Cell Balancing (Quick)  {#quick-cell-balance}
+#### Full Battery Charge
 
 Husky is powered by LiFePO<sub>4</sub> batteries. The function and health of these
 batteries is monitored by a Battery Management Unit (BMU) which is internal to the battery pack itself.
-
-Over the operating life of Husky, the State of Charge (SoC) of the batteries may start being
-misreported accompanied by a higher voltage difference between the batteries' cells. Typically battery cells
-should be within a range of 50 mV; if not, Husky's batteries may suddenly drop in SoC
-while operating or the Husky may unexpectedly shut off. To resolve this issue, it is required to
-perform regular cell balancing of the battery and BMU.
-
-A "quick" cell balancing should be performed at least once each week.
+It is recommended that the batteries be charged to 100% at least once per week.
 
 Procedure:
 
 1. Power off the robot.
 1. Place the robot on a level surface.
 1. Connect the manual charger.
-1. Let the batteries charge for at least four hours.
+1. Let the batteries charge until they reach a full charge, as indicated on the charger.
 
 #### AMP Sensor Cleaning
 
@@ -159,18 +156,6 @@ Do not apply excessive pressure to the camera lenses.
 ### Monthly Preventative Maintenance
 
 Perform the following tasks once every month.
-
-#### Battery Cell Balancing (Full)
-
-Refer to the notes above regarding the [weekly "quick" cell balancing](#quick-cell-balance).
-In a addition, a full balance of 24+ hours is recommended at least once per month.
-
-Procedure:
-
-1. Power off the robot.
-1. Place the robot on a level surface.
-1. Connect the manual charger.
-1. Let the batteries charge for at least 24 hours.
 
 #### Tire Inspection
 
@@ -252,255 +237,9 @@ have any concerns.
 ---
 
 ## Hardware Maintenance
-
-### Common Replacement Items {#husky_maintenance_common_replacement_items}
-
-<ComponentBillOfMaterialsNote />
-
-| Description                | CPR Item | Manufacturer            | Manufacturer Item     | Distributor | Distributor Item |
-| :------------------------- | :------- | :---------------------- | :-------------------- | :---------- | :--------------- |
-| Tire                       | 000269   | Carlisle                | 5100201               | -           | -                |
-| Tire's inner tube          | 000435   | Carlisle                | 323790                | -           | -                |
-| Battery                    | 025047   | Clearpath Robotics      | -                     | -           | -                |
-| Battery Charger            | 032729   | Clearpath Robotics      | -                     | -           | -                |
-| Air filter                 | 032403   | Clearpath Robotics      | -                     | -           | -                |
-| Main PCBA                  | 030449   | Clearpath Robotics      | -                     | -           | -                |
-| BLDC PCBA                  | 030377   | Clearpath Robotics      | -                     | -           | -                |
-| Common Core PCBA           | 030446   | Clearpath Robotics      | -                     | -           | -                |
-| 12 V DC/DC PCBA            | 030430   | Clearpath Robotics      | -                     | -           | -                |
-| 24 V DC/DC PCBA            | 030433   | Clearpath Robotics      | -                     | -           | -                |
-| Motor                      | 031514   | Clearpath Robotics      | -                     | -           | -                |
-
-See also the common integration parts for [cable ingress](integration_husky#using-the-icotek-cable-entry-system) and
-[breakout connectors](integration_husky#system-interface-circuit-board-connector-summary).
-
-### Replacing Tire or Inner Tube  {#tire-maintenance}
-
-:::safety-warning
-
-**Place the robot up on blocks prior to replacing the tire or inner tube.**
-
-Failure to support the robot prior to removing the wheel could cause the
-robot to tip over.
-
-:::
-
-Procedure:
-
-1. Follow the [Lock-Out Tag-Out](user_manual_husky#lockout-tagout) procedure.
-1. Remove the six M8 screws holding the wheel to the motor.
-   <center>
-     <img
-       src="/img/robot_images/husky_a300_images/husky_a300_tire_1.jpg"
-       width="600"
-     />
-   </center>
-1. Deflate the tire.
-1. Remove the six M4 screws that hold the split rim together.
-   <center>
-     <img
-       src="/img/robot_images/husky_a300_images/husky_a300_tire_2.jpg"
-       width="400"
-     />
-   </center>
-1. Remove the outer wheel rim.
-   <center>
-     <img
-       src="/img/robot_images/husky_a300_images/husky_a300_tire_3.jpg"
-       width="400"
-     />
-   </center>
-1. Remove the tire and tube from the inner rim.
-   <center>
-     <img
-       src="/img/robot_images/husky_a300_images/husky_a300_tire_4.jpg"
-       width="400"
-     />
-   </center>
-1. Replace the tire and/or tube as needed with new parts. Ensure that the
-   tube is installed in the tire and inflated only far enough that it takes
-   its shape. Inflating further will make reassembly difficult.
-1. Place the tire (with tube) onto to inner rim, aligning the valve stem
-   with the notch in the rim.
-   <center>
-     <img
-       src="/img/robot_images/husky_a300_images/husky_a300_tire_5.jpg"
-       width="400"
-     />
-   </center>
-1. Place the outer rim on top, aligning the value stem with the notch in
-   the rim.
-   <center>
-     <img
-       src="/img/robot_images/husky_a300_images/husky_a300_tire_6.jpg"
-       width="400"
-     />
-   </center>
-1. Reinstall the six M4 screws, tightening them in a star pattern to 2 Nm.
-
-   :::note
-
-   It may be necessary to use three longer M4 screws on a temporary basis
-   to help pull the inner and outer rims together and ensure alignment,
-   allowing the first three standard M4 screws to be installed. Then,
-   the temporary M4 screws can be removed and the standard ones installed.
-   As you tighten the screws, ensure that the valve stem is not being pinched.
-
-   :::
-
-   <center>
-     <img
-       src="/img/robot_images/husky_a300_images/husky_a300_tire_7.jpg"
-       width="400"
-     />
-   </center>
-
-1. Inflate the tire to 20 psi.
-1. Place the wheel on the motor and reinstall the six M8 screws, tightening
-   them in a star pattern to 22 Nm.
-   <center>
-     <img
-       src="/img/robot_images/husky_a300_images/husky_a300_tire_1.jpg"
-       width="400"
-     />
-   </center>
-
-### Replacing Circuit Boards
-
-Husky contains several circuit boards (PCBAs). If a failure occurs, there is normally only one
-board that needs to be replaced.
-
-:::safety-caution
-
-Circuit boards are sensitive components and can be damaged easily through electrostatic discharge (ESD).
-Be sure to follow proper ESD protection measures prior to handling any circuit boards.
-
-:::
-
-#### Procedure for replacing the DC/DC and BLDC circuit boards:
-
-1. Follow the [Lock-Out Tag-Out](user_manual_husky#lockout-tagout) procedure.
-1. Remove the seven screws that fasten the Top Plate to the chassis and remove the Top Plate.
-   <center>
-     <img
-       src="/img/robot_images/husky_a300_images/husky_a300_circuitboard_1.jpg"
-       width="600"
-     />
-   </center>
-1. Remove the cable brush holder.
-   <center>
-     <img
-       src="/img/robot_images/husky_a300_images/husky_a300_circuitboard_2.jpg"
-       width="600"
-     />
-   </center>
-1. Remove the heat shield covering the DC/DC and/or BLDC circuit boards.
-   <center>
-     <img
-       src="/img/robot_images/husky_a300_images/husky_a300_circuitboard_3.jpg"
-       width="600"
-     />
-   </center>
-1. Remove the failing circuit board by gently lifting the board up.
-   <center>
-     <img
-       src="/img/robot_images/husky_a300_images/husky_a300_circuitboard_4.jpg"
-       width="600"
-     />
-   </center>
-1. Install the new circuit board by aligning the connector and gently sliding it into place.
-   <center>
-     <img
-       src="/img/robot_images/husky_a300_images/husky_a300_circuitboard_5.jpg"
-       width="600"
-     />
-   </center>
-1. Reinstall the heat shields.
-1. Reinstall the cable brush holder.
-1. Put the Top Plate back in place and finger tighten the seven screws that were removed in Step 2.
-   Note that the screw with the sealing washer goes in the inner location and the remaining
-   six screws are installed at the perimeter. Tighten all seven screws to 3 Nm.
-   <center>
-     <img
-       src="/img/robot_images/husky_a300_images/husky_a300_circuitboard_6.jpg"
-       width="600"
-     />
-   </center>
-
-#### Procedure for replacing the Common Core circuit board:
-
-1. Follow the [Lock-Out Tag-Out](user_manual_husky#lockout-tagout) procedure.
-1. Remove the seven screws that fasten the Top Plate to the chassis and remove the Top Plate.
-   <center>
-     <img
-       src="/img/robot_images/husky_a300_images/husky_a300_circuitboard_1.jpg"
-       width="600"
-     />
-   </center>
-1. Remove the failing circuit board by removing the two retaining screws, pushing out on the retaining
-   clips, and gently pulling the board out horizontally.
-   <center>
-     <img
-       src="/img/robot_images/husky_a300_images/husky_a300_circuitboard_7.jpg"
-       width="600"
-     />
-   </center>
-1. Install the new circuit board by gently sliding it into place horizontally, ensure that the
-   retaining clips are secured, and that the two screws have been installed.
-1. Put the Top Plate back in place and finger tighten the seven screws that were removed in Step 2.
-   Note that the screw with the sealing washer goes in the inner location and the remaining
-   six screws are installed at the perimeter. Tighten all seven screws to 3 Nm.
-   <center>
-     <img
-       src="/img/robot_images/husky_a300_images/husky_a300_circuitboard_6.jpg"
-       width="600"
-     />
-   </center>
-
-#### Procedure for replacing the Main circuit board:
-
-1. Follow the [Lock-Out Tag-Out](user_manual_husky#lockout-tagout) procedure.
-1. Remove the seven screws that fasten the Top Plate to the chassis and remove the Top Plate.
-   <center>
-     <img
-       src="/img/robot_images/husky_a300_images/husky_a300_circuitboard_1.jpg"
-       width="600"
-     />
-   </center>
-1. Disconnect all cables from the Main circuit board.
-   <center>
-     <img
-       src="/img/robot_images/husky_a300_images/husky_a300_circuitboard_8.jpg"
-       width="400"
-     />
-   </center>
-1. Remove the failing circuit board by removing the retaining screws and then lifting out the board.
-   <center>
-     <img
-       src="/img/robot_images/husky_a300_images/husky_a300_circuitboard_9.jpg"
-       width="400"
-     />
-   </center>
-1. Place the old and new Main circuit boards on an ESD mat.
-1. Move the DC/DC, BLDC, and Common Core circuit boards from the old to the new Main circuit board
-   by following the procedures above.
-   <center>
-     <img
-       src="/img/robot_images/husky_a300_images/husky_a300_circuitboard_10.jpg"
-       width="400"
-     />
-   </center>
-1. Install the new Main circuit board tighten the retaining screws to 1 Nm.
-1. Reconnect all cables, noting that the labels on the cables should match those on the board.
-1. Put the Top Plate back in place and finger tighten the seven screws that were removed in Step 2.
-   Note that the screw with the sealing washer goes in the inner location and the remaining
-   six screws are installed at the perimeter. Tighten all seven screws to 3 Nm.
-   <center>
-     <img
-       src="/img/robot_images/husky_a300_images/husky_a300_circuitboard_6.jpg"
-       width="600"
-     />
-   </center>
+  <ComponentCommonReplacementItems />
+  <ComponentTireAndTube />
+  <ComponentReplacingCircuitBoards />
 
 ### Replacing the Computer
 
@@ -552,51 +291,7 @@ Procedure:
    </center>
 1. As needed, reinstall any custom configuration that has been backed up.
 
-### Replacing Motors
-
-Procedure:
-
-1. Follow the [Lock-Out Tag-Out](user_manual_husky#lockout-tagout) procedure.
-1. Remove the cable gland bracket on the side of the robot with the motor being
-   replaced by removing five screws.
-   <center>
-     <img
-       src="/img/robot_images/husky_a300_images/husky_a300_motor_1.jpg"
-       width="600"
-     />
-   </center>
-1. Disconnect the both sets of motor power and cables from the chassis on the
-   side of the robot with the motor being replaced.
-   <center>
-     <img
-       src="/img/robot_images/husky_a300_images/husky_a300_motor_2.jpg"
-       width="600"
-     />
-   </center>
-1. Remove the suspension beam from the chassis by removing the four nuts
-   and washers.
-   <center>
-     <img
-       src="/img/robot_images/husky_a300_images/husky_a300_motor_1.jpg"
-       width="600"
-     />
-   </center>
-1. Remove the wheel from the motor ([see above](#tire-maintenance)).
-1. Remove the failing motor from the suspension beam by removing the four
-   M8 screws.
-   <center>
-     <img
-       src="/img/robot_images/husky_a300_images/husky_a300_motor_4.jpg"
-       width="400"
-     />
-   </center>
-1. Mount the new motor on the suspension beam and tighten the four screws
-   to 20 Nm.
-1. Re-install the wheel onto the motor ([see above](#tire-maintenance)).
-1. Mount the suspension beam on the chassis, install the four washers,
-   and tighten the four nuts to 30 Nm. (Do not overtighten!)
-1. Reconnect both sets of motor power and cables.
-1. Install the cable gland bracket and tighten the five screws to 1 Nm.
+<ComponentMotors />
 
 ### Replacing Batteries
 
@@ -615,7 +310,7 @@ Ensure proper personal protective equipment is used when performing battery main
 1. Remove the cable gland brackets on both sides of the robot by removing five screws on each.
    <center>
      <img
-       src="/img/robot_images/husky_a300_images/husky_a300_motor_1.jpg"
+       src="/img/robot_images/husky_a300_image.png"
        width="600"
      />
    </center>
@@ -640,22 +335,23 @@ Ensure proper personal protective equipment is used when performing battery main
        width="600"
      />
    </center>
-1. Disconnect all cables at the front of the electronics tray.
+1. Disconnect all cables at the front of the electronics tray, at a minimum
+   the red Ethernet cable highlighted in the image.
    <center>
      <img
-       src="/img/robot_images/husky_a300_images/husky_a300_battery_2-red.jpg"
+       src="/img/robot_images/husky_a300_images/husky_a300_battery_2.jpg"
        width="600"
      />
    </center>
-1. Remove two screws at the front of the electronics tray used to fasten the
-   tray to the side of the robot.
+1. Disconnect all cables at the rear of the electronics tray.
+1. Remove the four screws used to fasten the electronics tray to the side of the robot.
    <center>
      <img
        src="/img/robot_images/husky_a300_images/husky_a300_battery_3.jpg"
        width="600"
      />
    </center>
-1. Tilt the electronics tray up to expose the batteries.
+1. Remove the electronics tray to expose the batteries.
    <center>
      <img
        src="/img/robot_images/husky_a300_images/husky_a300_battery_4.jpg"
@@ -709,9 +405,9 @@ Ensure proper personal protective equipment is used when performing battery main
 1. Re-install the positive battery busbar by placing it across the
    two fuses and tightening the two nuts to 3 Nm.
 1. Replace the two fuse covers.
-1. Tilt the electronics tray back into position and tighten the
-   two screws used to fasten the tray to the side of the robot to 3 Nm.
-1. Reconnect all cables at the front of the electronics tray.
+1. Put the electronics tray back into position and tighten the
+   four screws used to fasten the tray to the side of the robot to 3 Nm.
+1. Reconnect all cables at the front and rear of the electronics tray.
 1. Locate the V+ connector handle and re-install the connector.
 1. Put the Top Plate back in place and finger tighten the seven screws that were removed in Step 2.
    Note that the screw with the sealing washer goes in the inner location and the remaining
@@ -725,6 +421,17 @@ Ensure proper personal protective equipment is used when performing battery main
 1. Reconnect all motor power and encoder cables on the chassis.
 1. Re-install the cable gland brackets on both siders of the robot,
    tightening the five screws on each to 1 Nm.
+
+### Replacing Fuses
+
+In the unlikely event that a fuse fails, refer to the table below for the required replacement fuse.
+
+| Circuit Board Designator | Fuse Type and Rating  | Part Number |
+| :----------------------- | :-------------------- | :---------- |
+| F1, F2, F3, F4, F5, F8   | 125 V, 3 A, fast-blow | [Littlefuse 0453003.MR](https://www.digikey.ca/en/products/detail/littelfuse-inc/0453003-MR/552259) |
+| F6, F10                  | 125 V, 5 A, slow-blow | [Littlefuse 0454005.MR](https://www.digikey.ca/en/products/detail/littelfuse-inc/0454005-MR/552287) |
+| F7, F9                   | 125 V, 8 A, fast-blow | [Littlefuse 0453008.MR](https://www.digikey.ca/en/products/detail/littelfuse-inc/0453008-MR/552263) |
+| F52, F53, F54, F55, F56, F57, F58 | 32 V, 10 A, MINI Blade | [Littlefuse 0297010.WXT](https://www.digikey.ca/en/products/detail/littelfuse-inc/0297010-wxt/5233693) | 
 
 ---
 

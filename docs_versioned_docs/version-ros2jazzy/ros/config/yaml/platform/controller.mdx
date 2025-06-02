@@ -15,5 +15,55 @@ We support the following types of controllers on all platforms:
 Switching between each is done by setting the `controller` parameter under the `platform` tag.
 
 ```yaml
-controller: ps4 # one of ps4, ps4, logitech, xbox
+controller: ps4 # one of ps4, ps5, logitech, xbox
 ```
+
+## Teleop Speeds
+
+By default, holding the left trigger button of the controller enables driving at "normal" speeds
+while holding the right trigger button enables driving at "turbo" speeds.
+
+The table below shows the default linear and angular speeds for each platform:
+
+| Platform   | Linear speed (normal, m/s) | Linear speed (turbo, m/s) | Angular speed (normal, rad/s) | Angular speed (turbo, rad/s) |
+|:---------- |:-------------------------- |:------------------------- |:----------------------------- |:---------------------------- |
+| Husky A300 | 0.4                        | 1.5                       | 0.5                           | 1.0                          |
+| Husky A200 | 0.4                        | 1.0                       | 0.6                           | 1.2                          |
+| Jackal     | 0.4                        | 2.0                       | 0.6                           | 1.4                          |
+| Warthog    | 0.5                        | 1.0                       | 2.4                           | 2.4                          |
+| Dingo-D    | 0.4                        | 1.0                       | 0.6                           | 1.0                          |
+| Dingo-O    | 0.4                        | 1.0                       | 0.5                           | 1.4                          |
+| Ridgeback  | 0.4                        | 0.4                       | 0.5                           | 0.5                          |
+
+### Changing Teleop Speeds
+
+The normal and turbo teleop speeds can be adjusted by modifying the controller node's ROS parameters by using the
+[`extras.ros_parameters`](extras) field in `robot.yaml`.
+
+```yaml
+extras:
+  ros_parameters:
+    teleop_twist_joy_node:
+      scale_linear.x: 0.6
+      scale_angular.z: 0.75
+      scale_linear_turbo.x: 2.0
+      scale_angular_turbo.z: 1.0
+```
+
+**Normal speed parameters**
+- `scale_linear.x` sets the maximum forward/reverse velocity
+- `scale_linear.y` sets the maximum left/right velocity (Dingo-O and Ridgeback only)
+- `scale_angular.z` sets the maximum angular velocity
+
+**Turbo speed parameters**
+- `scale_linear_turbo.x` sets the maximum forward/reverse velocity
+- `scale_linear_turbo.y` sets the maximum left/right velocity (Dingo-O and Ridgeback only)
+- `scale_angular_turbo.z` sets the maximum angular velocity
+
+:::warning
+
+Do not set the normal or turbo velocity limits higher than the robot's maximum velocity. Doing so
+may make the robot difficult to control. The robot will not exceed its maximum speed, but the scaling
+on the joystick may result in awkward clipping, causing teleoperation to be jerky.
+
+:::

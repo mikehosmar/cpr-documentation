@@ -34,11 +34,11 @@ is not compatible and will result in no data being received on the subscriber. T
 ros2 topic info /topic_name -v
 ```
 
-### Common QoS profiles {#common-qos-profiles}
+## Common QoS profiles {#common-qos-profiles}
 
 The following are some common QoS profiles used by Clearpath platforms.
 
-#### System Default
+### System Default
 
 - **History**: _Keep Last_
 - **Depth**: _10_
@@ -51,7 +51,7 @@ The following are some common QoS profiles used by Clearpath platforms.
 
 The _System Default_ QoS profile is the most common profile used by most topics.
 
-#### Sensor Data
+### Sensor Data
 
 - **History**: _Keep Last_
 - **Depth**: _5_
@@ -72,7 +72,7 @@ Not all sensor drivers use this QoS profile. Always check the QoS profile before
 
 :::
 
-#### Transient Local
+### Transient Local
 
 - **History**: _Keep Last_
 - **Depth**: _10_
@@ -95,4 +95,4 @@ used the same topic, then they would both drive when a message is published to t
 to `robot1/cmd_vel` and `robot2/cmd_vel` for each respective robot.
 
 By default, the namespace of the robot will be obtained from the serial number of the robot. If your serial number is `cpr-a200-0001`, then your namespace
-will be `a200_0001`. This can be overwritten in the [robot.yaml](../config/yaml/overview.mdx) file.
+will be `a200_0001`. This can be overwritten in the [robot.yaml](../config/yaml/overview) file.
