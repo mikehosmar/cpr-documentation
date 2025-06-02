@@ -1,19 +1,14 @@
 #!/usr/bin/env python3
 
 # This script pulls error codes from a Google Sheet and updates the local mdx files in components/error_codes.
-
+# It requires the gspread library to interact with Google Sheets.
+# It is setup to use a service account for authentication.
+# Make sure to set the GOOGLE_SHEET_CREDENTIALS environment variable to the path of your service account JSON file.
+# It may be easier to to trigger the script from the github actions workflow.
 
 import os
 
 import gspread
-
-# process steps:
-# 1. Open the Google Sheet using gspread.
-# 2. Use categories in the first worksheet to determine category names and the assoociated worksheet with the error codes.
-# 3. For each worksheet, read the error codes and messages.
-# 4. Create or update the corresponding mdx files in components/error_codes.
-# 5. Write the error code and message in the mdx file format.
-# 6. Print the status of each file update.
 
 
 def add_section_description(file_path):
