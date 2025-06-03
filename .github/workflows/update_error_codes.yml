@@ -11,7 +11,7 @@ jobs:
     container:
       image: python:3.11
     env:
-      GOOGLE_SHEET_CREDENTIALS: /github/workspace/scripts/update_error_codes/service_account.json
+      GOOGLE_SHEET_CREDENTIALS: scripts/update_error_codes/service_account.json
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
